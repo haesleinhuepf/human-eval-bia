@@ -98,14 +98,32 @@ def check_correctness(problem: Dict, completion: str, timeout: float,
 
 @contextlib.contextmanager
 def time_limit(seconds: float):
-    def signal_handler(signum, frame):
-        raise TimeoutException("Timed out!")
-    signal.setitimer(signal.ITIMER_REAL, seconds)
-    signal.signal(signal.SIGALRM, signal_handler)
-    try:
-        yield
-    finally:
-        signal.setitimer(signal.ITIMER_REAL, 0)
+    # adaped from: https://github.com/openai/human-eval/issues/18#issuecomment-1609063376
+    import os
+    if os.name == 'posix': # linux
+        def signal_handler(signum, frame):
+            raise TimeoutException("Timed out!")
+        signal.setitimer(signal.ITIMER_REAL, seconds)
+        signal.signal(signal.SIGALRM, signal_handler)
+        try:
+            yield
+        finally:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+
+    elif os.name == 'nt': # windows
+        import threading
+        timer = threading.Timer(seconds, lambda: (_ for _ in ()).throw(TimeoutException("Timed out!")))
+        timer.start()
+        try:
+            yield
+        finally:
+            timer.cancel()
+    else:
+        raise RuntimeError("Operating system not supported")
+
+
+class TimeoutException(Exception):
+    pass
 
 
 @contextlib.contextmanager

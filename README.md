@@ -7,7 +7,7 @@ The original HumanEval repository is an evaluation harness for the HumanEval pro
 
 ## Installation
 
-Make sure to use python 3.7 or later:
+Make sure to use python 3.10 or later:
 ```
 $ mamba create --name heb python=3.10
 $ conda activate heb

@@ -31,10 +31,10 @@ disclaimer before running code in a potentially unsafe manner. See the comment i
 `execution.py` for more information and instructions.**
 
 To reproduce our benchmarks, you can go through the notebooks provided in the `/notebooks` directory:
-* [Create benchmarking test case set from notebooks](notebooks/create_cases.ipynb)
-* [Create generated code samples from chatGPT/gemini/mistral/codellama/...](notebooks/create_samples.ipynb)
-* [Evaluate samples by executing code](notebooks/evaluate_samples.ipynb)
-* [Summarize evaluation](notebooks/summarize_evaluation.ipynb)
+* [Create benchmarking test case set from notebooks](notebooks/human-eval-bia/create_cases.ipynb)
+* [Create generated code samples from chatGPT/gemini/mistral/codellama/...](notebooks/human-eval-bia/create_samples.ipynb)
+* [Evaluate samples by executing code](notebooks/human-eval-bia/evaluate_samples.ipynb)
+* [Summarize evaluation](notebooks/human-eval-bia/summarize_evaluation.ipynb)
 
 
 ## Citation

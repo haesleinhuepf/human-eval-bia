@@ -8,3 +8,4 @@ bia-bob
 google-cloud-aiplatform
 opencv-python
 pandas
+pyclesperanto-prototype

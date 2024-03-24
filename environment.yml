@@ -37,6 +37,8 @@ dependencies:
       - charset-normalizer==3.3.2
       - colorama==0.4.6
       - comm==0.2.2
+      - contourpy==1.2.0
+      - cycler==0.12.1
       - debugpy==1.8.1
       - decorator==5.1.1
       - defusedxml==0.7.1
@@ -45,6 +47,7 @@ dependencies:
       - executing==2.0.1
       - fastjsonschema==2.19.1
       - fire==0.6.0
+      - fonttools==4.50.0
       - fqdn==1.5.1
       - google-api-core==2.18.0
       - google-auth==2.29.0
@@ -82,8 +85,10 @@ dependencies:
       - jupyterlab==4.1.5
       - jupyterlab-pygments==0.3.0
       - jupyterlab-server==2.25.4
+      - kiwisolver==1.4.5
       - lazy-loader==0.3
       - markupsafe==2.1.5
+      - matplotlib==3.8.3
       - matplotlib-inline==0.1.6
       - metakernel==0.30.1
       - mistune==3.0.2
@@ -113,12 +118,16 @@ dependencies:
       - pure-eval==0.2.2
       - pyasn1==0.5.1
       - pyasn1-modules==0.3.0
+      - pyclesperanto-prototype==0.24.2
       - pycparser==2.21
       - pydantic==2.6.4
       - pydantic-core==2.16.3
       - pygments==2.17.2
+      - pyopencl==2024.1
+      - pyparsing==3.1.2
       - python-dateutil==2.9.0.post0
       - python-json-logger==2.0.7
+      - pytools==2024.1.1
       - pytz==2024.1
       - pywin32==306
       - pywinpty==2.0.13
@@ -143,9 +152,11 @@ dependencies:
       - tifffile==2024.2.12
       - tinycss2==1.2.1
       - tomli==2.0.1
+      - toolz==0.12.1
       - tornado==6.4
       - tqdm==4.66.2
       - traitlets==5.14.2
+      - transforms3d==0.4.1
       - types-python-dateutil==2.9.0.20240316
       - typing-extensions==4.10.0
       - tzdata==2024.1

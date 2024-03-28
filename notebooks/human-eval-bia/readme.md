@@ -1,6 +1,6 @@
 
 # List of use-cases
-This list of use-cases is auto-generated. Do not modify this file.
+This list of 27 use-cases is auto-generated. Do not modify this file.
 
 
 * [detect_edges](filtering_0.ipynb): 
@@ -95,9 +95,8 @@ This list of use-cases is auto-generated. Do not modify this file.
     The resulting image will be of quarter size compared to the original image.
     
         
-* [crop_quarter_image](transform_1.ipynb): 
-    Crops out the first half image in both dimensions (width and height). 
-    The resulting image will be of quarter size compared to the original image.
+* [transpose_image_axes](transform_1.ipynb): 
+    Transposes the first two axes of an image.
     
         
 * [rotate_image_by_90_degrees](transform_2.ipynb): 
@@ -106,6 +105,12 @@ This list of use-cases is auto-generated. Do not modify this file.
         
 * [subsample_image](transform_3.ipynb): 
     Subsamples an image by taking the skipping every n'th pixel in X and Y.
+    
+        
+* [rgb_to_grey_image_transform](transform_4.ipynb): 
+    Convert an RGB image to a single-channel gray scale image with 
+    configurable weights r, g and b.
+    The weights are normalized to be 1 in sum.
     
         
 * [worflow_segmentation_measurement_summary](workflow_0.ipynb): 

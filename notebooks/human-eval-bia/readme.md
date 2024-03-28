@@ -1,6 +1,6 @@
 
 # List of use-cases
-This list of 27 use-cases is auto-generated. Do not modify this file.
+This list of 40 use-cases is auto-generated. Do not modify this file.
 
 
 * [detect_edges](filtering_0.ipynb): 
@@ -9,6 +9,22 @@ This list of 27 use-cases is auto-generated. Do not modify this file.
         
 * [remove_noise_edge_preserving](filtering_1.ipynb): 
     Applies an edge-preserving noise-removal filter to an image.
+    
+        
+* [sum_images](filtering_2.ipynb): 
+    Sums two images pixel-by-pixel and returns the result
+    
+        
+* [convolve_images](filtering_3.ipynb): 
+    Convolve an image with a kernel_image and return the result
+    
+        
+* [subtract_background_tophat](filtering_4.ipynb): 
+    Applies a top-hat filter with a given radius to an image with dark background (low values) and bright foreground (high values).
+    
+        
+* [deconvolve_image](filtering_5.ipynb): 
+    Deconvolve an image with a kernel_image and return the result.
     
         
 * [return_hello_world](hello_world.ipynb): 
@@ -36,6 +52,10 @@ This list of 27 use-cases is auto-generated. Do not modify this file.
         
 * [binary_closing](label_processing_4.ipynb): 
     Applies binary closing to a binary_image with a square footprint with a given radius.
+    
+        
+* [map_pixel_count_of_labels](label_processing_5.ipynb): 
+    Takes a label_image, determines the pixel-count per label and creates an image where the label values are replaced by the corresponding pixel count.
     
         
 * [measure_intensity_of_labels](measure_0.ipynb): 
@@ -67,6 +87,15 @@ This list of 27 use-cases is auto-generated. Do not modify this file.
     for each labeled object.
     
         
+* [measure_aspect_ratio_of_regions](measure_6.ipynb): 
+    Takes a label image and returns a pandas dataframe
+    with measurements for aspect_ratio of the objects
+    
+        
+* [measure_intensity_over_time](measure_7.ipynb): 
+    Takes a timelapse (list of images), measures the average intensity over time and returns the resulting measurements as list.
+    
+        
 * [maximum_intensity_projection](project_0.ipynb): 
     Performs a maximum intensity projection along the first axis of an image.
     
@@ -90,6 +119,28 @@ This list of 27 use-cases is auto-generated. Do not modify this file.
     starting from a single point.
     
         
+* [t_test](statistics_0.ipynb): 
+    Takes two specified columns from a given dataframe and applies a paired T-test to it to determine the p-value.
+    
+        
+* [mean_squared_error](statistics_1.ipynb): 
+    Computes the mean-squared-error of two images compared pixel-by-pixel
+    
+        
+* [mean_std_column](statistics_2.ipynb): 
+    Computes the mean average and standard deviation of a specified column 
+    in a given dataframe and returns these two values.
+    
+        
+* [extract_surface_measure_area](surfaces_0.ipynb): 
+    Take a 3D binary_volume_image, extracts the surface of the white (voxel value != 0) object 
+    and returns the surface area of the object.
+    
+        
+* [convex_hull_measure_area](surfaces_1.ipynb): 
+    Take a 3D point_cloud, determines the convex hull around the points and returns the surface area of the convex hull.
+    
+        
 * [crop_quarter_image](transform_0.ipynb): 
     Crops out the first half image in both dimensions (width and height). 
     The resulting image will be of quarter size compared to the original image.
@@ -104,7 +155,7 @@ This list of 27 use-cases is auto-generated. Do not modify this file.
     
         
 * [subsample_image](transform_3.ipynb): 
-    Subsamples an image by taking the skipping every n'th pixel in X and Y.
+    Subsamples an image by skipping every n'th pixel in X and Y.
     
         
 * [rgb_to_grey_image_transform](transform_4.ipynb): 
@@ -134,5 +185,9 @@ This list of 27 use-cases is auto-generated. Do not modify this file.
 * [worflow_segmentation_counting](workflow_2.ipynb): 
     This function segments objects in an image with intensity above average 
     and returns their count.
+    
+        
+* [count_objects_over_time](workflow_3.ipynb): 
+    Takes a timelapse (list of binary images), counts the number of connected components and returns the resulting counts as list.
     
         

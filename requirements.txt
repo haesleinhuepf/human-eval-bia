@@ -10,3 +10,4 @@ opencv-python
 pandas
 pyclesperanto-prototype
 anthropic
+vedo

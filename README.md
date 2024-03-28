@@ -1,7 +1,7 @@
 # HumanEval for Bio-image Analysis (HEBIA): Hand-Written Evaluation Set 
 
 This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where minor modifications were made 
-to adapt the evaluation harness for the Bio-image Analysis domain. 
+to adapt the evaluation harness for the Bio-image Analysis domain. You find all test cases [listed here](notebooks/human-eval-bia/readme.md)
 The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 
 "[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374)".
 

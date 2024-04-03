@@ -1,6 +1,6 @@
 
 # List of use-cases
-This list of 40 use-cases is auto-generated. Do not modify this file.
+This list of 43 use-cases is auto-generated. Do not modify this file.
 
 
 * [detect_edges](filtering_0.ipynb): 
@@ -132,6 +132,17 @@ This list of 40 use-cases is auto-generated. Do not modify this file.
     in a given dataframe and returns these two values.
     
         
+* [create_umap](statistics_3.ipynb): 
+    Takes a dataframe and computes a UMAP from all columns. 
+    The two UMAP vectors are stored in the dataframe as `umap0` and `umap1`.
+    
+        
+* [pair_wise_correlation_matrix](statistics_4.ipynb): 
+    Takes a pandas dataframe and computes for all columns their Pearson's correlation coefficient
+    for all columns in the dataframe. For n columns, this is a n x n matrix of coefficients.
+    The matrix is returned as dataframe.
+    
+        
 * [extract_surface_measure_area](surfaces_0.ipynb): 
     Take a 3D binary_volume_image, extracts the surface of the white (voxel value != 0) object 
     and returns the surface area of the object.
@@ -189,5 +200,15 @@ This list of 40 use-cases is auto-generated. Do not modify this file.
         
 * [count_objects_over_time](workflow_3.ipynb): 
     Takes a timelapse (list of binary images), counts the number of connected components and returns the resulting counts as list.
+    
+        
+* [segment_measure_umap](workflow_4.ipynb): 
+    This function takes a single channel intensity image, 
+    segments objects with intensity above half the maximum intensity, 
+    labels connected components, 
+    measures area, perimeter, mean_intensity, minor and major axis of the labeled objects, 
+    and produces a UMAP from the given measurements. 
+    The two UMAP vectors are saved as `umap0` and `umap1` togther with the measurements in a dataframe. 
+    The function returns this dataframe.
     
         

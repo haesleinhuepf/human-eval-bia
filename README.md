@@ -1,7 +1,7 @@
 # HumanEval for Bio-image Analysis (HEBIA): Hand-Written Evaluation Set 
 
 This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where minor modifications were made 
-to adapt the evaluation harness for the Bio-image Analysis domain. You find all test cases [listed here](notebooks/human-eval-bia/readme.md)
+to adapt the evaluation harness for the Bio-image Analysis domain. You find all test cases [listed here](test_cases/readme.md)
 The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 
 "[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374)".
 
@@ -34,10 +34,10 @@ disclaimer before running code in a potentially unsafe manner. See the comment i
 > Also note when executing the benchmark using commercial models such as chatGPT or gemini, substantial costs can be caused.
 
 To reproduce our benchmarks, you can go through the notebooks provided in the `/notebooks` directory:
-* [Create benchmarking test case set from notebooks](notebooks/human-eval-bia/create_cases.ipynb)
-* [Create generated code samples from chatGPT/gemini/mistral/codellama/...](notebooks/human-eval-bia/create_samples.ipynb)
-* [Evaluate samples by executing code](notebooks/human-eval-bia/evaluate_samples.ipynb)
-* [Summarize evaluation](notebooks/human-eval-bia/summarize_evaluation.ipynb)
+* [Create benchmarking test case set from notebooks](demo/create_cases.ipynb)
+* [Create generated code samples from chatGPT/gemini/mistral/codellama/...](demo/create_samples.ipynb)
+* [Evaluate samples by executing code](demo/evaluate_samples.ipynb)
+* [Summarize evaluation](demo/summarize_evaluation.ipynb)
 
 ## Extending the benchmark
 

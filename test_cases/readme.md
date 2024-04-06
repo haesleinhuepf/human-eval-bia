@@ -1,6 +1,6 @@
 
 # List of use-cases
-This list of 43 use-cases is auto-generated. Do not modify this file.
+This list of 47 use-cases is auto-generated. Do not modify this file.
 
 
 * [apply_otsu_threshold_and_count_postiive_pixels](apply_otsu_threshold_and_count_postiive_pixels.ipynb): 
@@ -74,6 +74,10 @@ This list of 43 use-cases is auto-generated. Do not modify this file.
     No gaps are there.
     
         
+* [list_image_files_in_folder](list_image_files_in_folder.ipynb): 
+    Lists all image files in a folder.
+    
+        
 * [map_pixel_count_of_labels](map_pixel_count_of_labels.ipynb): 
     Takes a label_image, determines the pixel-count per label and creates an image where the label values are replaced by the corresponding pixel count.
     
@@ -116,6 +120,10 @@ This list of 43 use-cases is auto-generated. Do not modify this file.
 * [measure_properties_of_regions](measure_properties_of_regions.ipynb): 
     Takes a label image and an intensity image, and returns pandas dataframe
     with measurements for area, perimeter and mean_intensity.
+    
+        
+* [open_image_return_dimensions](open_image_return_dimensions.ipynb): 
+    Opens an image and returns its dimensions
     
         
 * [pair_wise_correlation_matrix](pair_wise_correlation_matrix.ipynb): 
@@ -200,6 +208,19 @@ This list of 43 use-cases is auto-generated. Do not modify this file.
       detected minima to retrieve a label image
     * remove all objects which touch the image border
     * measure the area of all remaining objects together
+    
+        
+* [workflow_batch_process_folder_count_labels](workflow_batch_process_folder_count_labels.ipynb): 
+    This functions goes through all .tif image files in a specified folder, 
+    loads the images and count labels each image. 
+    It returns a dictionary with filenames and corresponding counts.
+    
+        
+* [workflow_batch_process_folder_measure_intensity](workflow_batch_process_folder_measure_intensity.ipynb): 
+    This functions goes through all .tif image files in a specified image folder 
+    and corresponding label images in another labels folder. 
+    It loads the images and corresponding labels, and measures min, mean and max intensity of all labels.
+    The function returns a dataframe with five columns: min_intensity, mean_intensity, max_intensity, label and filename.
     
         
 * [workflow_segment_measure_umap](workflow_segment_measure_umap.ipynb): 

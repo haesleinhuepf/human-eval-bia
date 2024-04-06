@@ -1,0 +1,1 @@
+This folder contains example images so that we can pass them to test-case functions.

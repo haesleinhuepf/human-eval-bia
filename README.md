@@ -1,4 +1,4 @@
-# HumanEval for Bio-image Analysis (HEBIA): Hand-Written Evaluation Set 
+# HumanEval for Bio-image Analysis: Hand-Written Evaluation Set 
 
 This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where minor modifications were made 
 to adapt the evaluation harness for the Bio-image Analysis domain. You find all test cases [listed here](test_cases/readme.md)

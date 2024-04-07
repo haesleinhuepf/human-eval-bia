@@ -1,15 +1,3 @@
 tqdm
 fire
 numpy
-jupyterlab
-scikit-image
-openai==1.5.0
-bia-bob
-google-cloud-aiplatform
-opencv-python
-pandas
-pyclesperanto-prototype
-anthropic
-vedo
-google-generativeai
-umap-learn

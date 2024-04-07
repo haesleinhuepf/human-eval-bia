@@ -1,1 +1,0 @@
-This readme just serves confusing batch processing algorithms. They may expect a folder full of images only.

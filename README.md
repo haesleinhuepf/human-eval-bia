@@ -1,24 +1,21 @@
-# HumanEval for Bio-image Analysis (HEBIA): Hand-Written Evaluation Set 
+# HumanEval: Hand-Written Evaluation Set 
 
-This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where minor modifications were made 
-to adapt the evaluation harness for the Bio-image Analysis domain. You find all test cases [listed here](test_cases/readme.md)
-The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 
-"[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374)".
+This is an evaluation harness for the HumanEval problem solving dataset
+described in the paper "[Evaluating Large Language Models Trained on
+Code](https://arxiv.org/abs/2107.03374)".
 
 ## Installation
 
-Make sure to use python 3.10 or later:
+Make sure to use python 3.7 or later:
 ```
-$ mamba create --name heb python=3.10
-$ conda activate heb
+$ conda create -n codex python=3.7
+$ conda activate codex
 ```
 
 Check out and install this repository:
 ```
-$ git clone https://github.com/haesleinhuepf/human-eval-bia.git
-$ cd human-eval-bia
-$ pip install -e .
-$ pip install -r requirements.txt
+$ git clone https://github.com/openai/human-eval
+$ pip install -e human-eval
 ```
 
 ## Usage
@@ -30,57 +27,89 @@ in `execution.py` is deliberately commented out to ensure users read this
 disclaimer before running code in a potentially unsafe manner. See the comment in
 `execution.py` for more information and instructions.**
 
-![CAUTION]
-> Also note when executing the benchmark using commercial models such as chatGPT or gemini, substantial costs can be caused.
-
-To reproduce our benchmarks, you can go through the notebooks provided in the `/notebooks` directory:
-* [Create benchmarking test case set from notebooks](demo/create_cases.ipynb)
-* [Create generated code samples from chatGPT/gemini/mistral/codellama/...](demo/create_samples.ipynb)
-* [Evaluate samples by executing code](demo/evaluate_samples.ipynb)
-* [Summarize evaluation](demo/summarize_evaluation.ipynb)
-
-## Extending the benchmark
-
-You can add new test cases by adding new notebooks to the `/notebooks/human-eval-bia` directory. 
-Check out the examples there and make sure to stick to the following rules.
-
-![CAUTION]
-> Most importantly: When writing new test case notebooks, do not use language models for code generation. 
-> You would otherwise bias the benchmark towards this model. 
-> Use human-writen code only and/or examples from the documentation of specific librarires.
-
-The notebooks have to have the following format:
-* Within one cell there must be a function that solves a specific [bio-image analysis] task. Very basic example, computing the sum of two numbers:
-```python
-def sum(a, b):
-    """
-    This function computes the sum of two numbers.
-    """
-    return a + b
+After following the above instructions to enable execution, generate samples
+and save them in the following JSON Lines (jsonl) format, where each sample is
+formatted into a single line like so:
 ```
-* This function must have a meaningful docstring between """ and """. It must be so meaningful that a language model could possibly write the entire function.
-* There must be another code cell that starts with `def check(candiate):` and contains test code to test the generated code.
-* The text code must use `assert` statements and call the `candidate` function. E.g. if a given function to test is `sum`, then a valid test for `sum` would be:
+{"task_id": "Corresponding HumanEval task ID", "completion": "Completion only without the prompt"}
 ```
-def check(candidate):
-    assert candidate(3, 4) == 7
-```
-* A third python code cell in the notebook must call the `check` function with your custom function, e.g. like this, to prove that the code you provided works with the tests you wrote:
-```
-check(sum)
-```
-* Optional: You can add as many markdown cells as you like to explain the test case.
+We provide `example_problem.jsonl` and `example_solutions.jsonl` under `data`
+to illustrate the format and help with debugging.
 
-This is how it works under the hood:
-* From the cell with the function definition all code above the docstring, including the docstring, will be stored as prompt. Many prompts from many notebooks will be collected in one `jsonl` file.
-* Given language models will be asked to complete the code by adding python code below which does what the docstring claims.
-* Afterwards, the generated code examples will be executed and the tests will be run to see if the results were correct.
+Here is nearly functional example code (you just have to provide
+`generate_one_completion` to make it work) that saves generated completions to
+`samples.jsonl`.
+```
+from human_eval.data import write_jsonl, read_problems
+
+problems = read_problems()
+
+num_samples_per_task = 200
+samples = [
+    dict(task_id=task_id, completion=generate_one_completion(problems[task_id]["prompt"]))
+    for task_id in problems
+    for _ in range(num_samples_per_task)
+]
+write_jsonl("samples.jsonl", samples)
+```
+
+To evaluate the samples, run
+```
+$ evaluate_functional_correctness samples.jsonl
+Reading samples...
+32800it [00:01, 23787.50it/s]
+Running test suites...
+100%|...| 32800/32800 [16:11<00:00, 33.76it/s]
+Writing results to samples.jsonl_results.jsonl...
+100%|...| 32800/32800 [00:00<00:00, 42876.84it/s]
+{'pass@1': ..., 'pass@10': ..., 'pass@100': ...}
+```
+This script provides more fine-grained information in a new file ending in
+`<input_path>_results.jsonl`. Each row now contains whether the completion
+`passed` along with the execution `result` which is one of "passed", "timed
+out", or "failed".
+
+As a quick sanity-check, the example samples should yield 0.5 pass@1.
+```
+$ evaluate_functional_correctness data/example_samples.jsonl --problem_file=data/example_problem.jsonl
+Reading samples...
+6it [00:00, 3397.11it/s]
+Running example suites...
+100%|...| 6/6 [00:03<00:00,  1.96it/s]
+Writing results to data/example_samples.jsonl_results.jsonl...
+100%|...| 6/6 [00:00<00:00, 6148.50it/s]
+{'pass@1': 0.4999999999999999}
+```
+
+Because there is no unbiased way of estimating pass@k when there are fewer
+samples than k, the script does not evaluate pass@k for these cases. To
+evaluate with other k values, pass `--k=<comma-separated-values-here>`. For
+other options, see
+```
+$ evaluate_functional_correctness --help
+```
+However, we recommend that you use the default values for the rest.
+
+## Known Issues
+
+While evaluation uses very little memory, you might see the following error
+message when the system is running out of RAM. Since this may cause some
+correct programs to fail, we recommend that you free some memory and try again.
+```
+malloc: can't allocate region
+```
 
 ## Citation
 
-In case you are only using the evaluation code in this repository, consider using and citing [HumanEval](https://github.com/openai/human-eval?tab=readme-ov-file#citation).
-If you are using the Bio-image Analysis evaluation set, please cite the following:
+Please cite using the following bibtex entry:
 
 ```
-todo
+@article{chen2021codex,
+  title={Evaluating Large Language Models Trained on Code},
+  author={Mark Chen and Jerry Tworek and Heewoo Jun and Qiming Yuan and Henrique Ponde de Oliveira Pinto and Jared Kaplan and Harri Edwards and Yuri Burda and Nicholas Joseph and Greg Brockman and Alex Ray and Raul Puri and Gretchen Krueger and Michael Petrov and Heidy Khlaaf and Girish Sastry and Pamela Mishkin and Brooke Chan and Scott Gray and Nick Ryder and Mikhail Pavlov and Alethea Power and Lukasz Kaiser and Mohammad Bavarian and Clemens Winter and Philippe Tillet and Felipe Petroski Such and Dave Cummings and Matthias Plappert and Fotios Chantzis and Elizabeth Barnes and Ariel Herbert-Voss and William Hebgen Guss and Alex Nichol and Alex Paino and Nikolas Tezak and Jie Tang and Igor Babuschkin and Suchir Balaji and Shantanu Jain and William Saunders and Christopher Hesse and Andrew N. Carr and Jan Leike and Josh Achiam and Vedant Misra and Evan Morikawa and Alec Radford and Matthew Knight and Miles Brundage and Mira Murati and Katie Mayer and Peter Welinder and Bob McGrew and Dario Amodei and Sam McCandlish and Ilya Sutskever and Wojciech Zaremba},
+  year={2021},
+  eprint={2107.03374},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
 ```

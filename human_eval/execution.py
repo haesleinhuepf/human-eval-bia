@@ -10,8 +10,7 @@ import signal
 import tempfile
 
 def unsafe_execute(problem, completion, result, timeout):
-
-    with create_tempdir():
+    if True:
 
         # These system calls are needed when cleaning up tempdir.
         import os

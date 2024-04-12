@@ -13,3 +13,4 @@ anthropic
 vedo
 google-generativeai
 umap-learn
+dask

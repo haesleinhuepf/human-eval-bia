@@ -1,4 +1,4 @@
-name: heb
+name: heb2
 channels:
   - conda-forge
 dependencies:
@@ -25,6 +25,7 @@ dependencies:
       - argon2-cffi==23.1.0
       - argon2-cffi-bindings==21.2.0
       - arrow==1.3.0
+      - asciitree==0.3.3
       - asttokens==2.4.1
       - async-lru==2.0.4
       - attrs==23.2.0
@@ -46,6 +47,7 @@ dependencies:
       - docstring-parser==0.16
       - exceptiongroup==1.2.0
       - executing==2.0.1
+      - fasteners==0.19
       - fastjsonschema==2.19.1
       - filelock==3.13.4
       - fire==0.6.0
@@ -109,6 +111,7 @@ dependencies:
       - networkx==3.3
       - notebook-shim==0.2.4
       - numba==0.59.1
+      - numcodecs==0.12.1
       - numpy==1.26.4
       - openai==1.5.0
       - opencv-python==4.9.0.80
@@ -183,4 +186,5 @@ dependencies:
       - webcolors==1.13
       - webencodings==0.5.1
       - websocket-client==1.7.0
+      - zarr==2.17.2
 prefix: C:\Users\haase\mambaforge\envs\heb2

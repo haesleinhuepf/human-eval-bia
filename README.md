@@ -80,7 +80,7 @@ Also update the [environment.yml](environment.yml) file using this command:
 conda env export > environment.yml 
 ```
 
-Submit both files together with your pull-request. That we we can see how the environment changes when merging a pull-request.
+Submit both files together with your pull-request. That way we can see how the environment changes when merging a pull-request.
 
 ## How it works
 

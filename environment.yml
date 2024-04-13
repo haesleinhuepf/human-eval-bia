@@ -36,11 +36,14 @@ dependencies:
       - certifi==2024.2.2
       - cffi==1.16.0
       - charset-normalizer==3.3.2
+      - click==8.1.7
+      - cloudpickle==3.0.0
       - circle-fit==0.2.1
       - colorama==0.4.6
       - comm==0.2.2
       - contourpy==1.2.1
       - cycler==0.12.1
+      - dask==2024.4.1
       - debugpy==1.8.1
       - decorator==5.1.1
       - defusedxml==0.7.1
@@ -79,6 +82,7 @@ dependencies:
       - huggingface-hub==0.22.2
       - idna==3.7
       - imageio==2.34.0
+      - importlib-metadata==7.1.0
       - ipykernel==6.29.4
       - ipython==8.23.0
       - isoduration==20.11.0
@@ -101,6 +105,7 @@ dependencies:
       - kiwisolver==1.4.5
       - lazy-loader==0.4
       - llvmlite==0.42.0
+      - locket==1.0.0
       - markupsafe==2.1.5
       - matplotlib==3.8.4
       - matplotlib-inline==0.1.6
@@ -120,6 +125,8 @@ dependencies:
       - packaging==24.0
       - pandas==2.2.2
       - pandocfilters==1.5.1
+      - partd==1.4.1
+      - pexpect==4.9.0
       - parso==0.8.4
       - pillow==10.3.0
       - platformdirs==4.2.0
@@ -187,5 +194,6 @@ dependencies:
       - webcolors==1.13
       - webencodings==0.5.1
       - websocket-client==1.7.0
+      - zipp==3.18.1
       - zarr==2.17.2
 prefix: C:\Users\haase\mambaforge\envs\heb2

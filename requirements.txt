@@ -13,3 +13,4 @@ vedo
 google-generativeai
 umap-learn
 zarr
+circle-fit

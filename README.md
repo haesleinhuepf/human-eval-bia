@@ -38,6 +38,7 @@ To reproduce our benchmarks, you can go through the notebooks provided in the `/
 * [Create generated code samples from chatGPT/gemini/mistral/codellama/...](demo/create_samples.ipynb)
 * [Evaluate samples by executing code](demo/evaluate_samples.ipynb)
 * [Summarize evaluation](demo/summarize_evaluation.ipynb)
+* [Detect missing requirements](demo/detect_missing_requirements.ipynb): In case this notebook lists missing requirements, that can be installed, the benchmark maintainers may add those requirements and run the evaluation step again.
 
 ## Extending the benchmark
 

@@ -73,7 +73,7 @@ check(sum)
 
 ## Adding dependencies
 
-If the new test-case requires specific Python libraries to be installed, please add them to the [requirements.txt](requirements.txt). 
+We aim at collecting all Python libraries that LLMs are capable of using in the bio-image analysis context in the [requirements.txt](requirements.txt) file. Additionally, for documentation purposes, we want to document in which environment the last evaluation was executed. Thus, also an environment.yml file needs to be updated, in particular when requirements change. If the new test-case requires specific Python libraries to be installed, please add them to the [requirements.txt](requirements.txt). 
 Also update the [environment.yml](environment.yml) file using this command:
 
 ```

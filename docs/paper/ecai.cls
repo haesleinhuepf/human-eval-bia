@@ -1248,6 +1248,11 @@
 \else
   \newenvironment{ack}{\section*{Acknowledgements}}{}
 \fi
+\if@double@blind@
+  \excludecomment{blind}
+\else
+  \newenvironment{blind}{}{}
+\fi
 
 \def\lquotation{\list{}{\listparindent 1.5em
  \setlength{\rightmargin}{1true cm}

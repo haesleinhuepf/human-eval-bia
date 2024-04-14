@@ -12,8 +12,8 @@
 %%% Use the first variant for the camera-ready paper.
 %%% Use the second variant for submission (for double-blind reviewing).
 
-\documentclass{ecai} 
-%\documentclass[doubleblind]{ecai} 
+%\documentclass{ecai} 
+\documentclass[doubleblind]{ecai} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27,6 +27,7 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{color}
+\usepackage{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -56,7 +57,7 @@
 %%% Use this command to specify your submission number.
 %%% In doubleblind mode, it will be printed on the first page.
 
-\paperid{123} 
+\paperid{363} 
 
 %%% Use this command to specify the title of your paper.
 
@@ -83,7 +84,7 @@
 %%% Use this environment to include an abstract of your paper.
 
 \begin{abstract}
-In the computational age we life in, life-scientists often solve scientific bio-image analysis (BIA) questions using Python code, even though they are not commonly trained in programming. As a common use-case for Large Language Models (LLMs) is code-generation, we see potential in using LLMs for BIA. We present a quantitative benchmark to estimate the capability of LLMs to generate code for solving common BIA tasks. The benchmark consists of 47 human-written prompts, corresponding canonical solutions written in Python and unit-tests to evaluate functional correctness of potential solutions. We demonstrate the benchmark by comparing 6 LLMs. We propose mid-/long-term efforts in maintaining and extending the benchmark by the BIA open-source community to ensure community needs are covered properly. This way we can also guide LLM developers in moving the frontier of current capabilities of LLMs towards more advanced applications in BIA. 
+In the computational age we life in, life-scientists often solve scientific bio-image analysis (BIA) questions using Python code, even though they are not commonly trained in programming. As a common use-case for Large Language Models (LLMs) is code-generation, we see potential in using LLMs for BIA. We present a quantitative benchmark to estimate the capability of LLMs to generate code for solving common BIA tasks. The benchmark consists of 47 human-written prompts, corresponding canonical solutions written in Python and unit-tests to evaluate functional correctness of potential solutions. We demonstrate the benchmark by comparing 6 LLMs. We propose mid-/long-term efforts in maintaining and extending the benchmark by the BIA open-source community to ensure community needs are covered properly. This way we can also guide LLM developers in moving the frontier of current capabilities of LLMs towards more advanced applications in BIA. Our code is available on github.
 \end{abstract}
 
 \end{frontmatter}
@@ -94,12 +95,9 @@ In the computational age we life in, life-scientists often solve scientific bio-
 
 Many projects in biology involve state-of-the-art microscopy and  quantitative bio-image analysis (BIA), which often requires programming skills. As programming is commonly not taught to life-scientists, we see a potential in using large language models for this task. Since modern Large Language Models (LLMs) such as chatGPT (OpenAI et al. 2023) were introduced, they change how humans interact with computers. LLMs were originally developed to solve  natural language processing tasks such as  text classification, language translation, or question answering. Interestingly, these models  are also capable of translating human languages, such as English, into programming languages, such as Python. Moreover, they can produce executable code that solves tasks defined by human natural language input (Brown et al. 2020). This capability has huge potential for interdisciplinary research areas such as microscopy image analysis (Loïc A. Royer 2023). LLMs can fill a gap where scientists with limited programming skills meet image analysis tasks which often require knowledge of programming languages such as Python. LLMs are indeed capable of writing BIA code as demonstrated in (Loic A. Royer 2023), but it is yet unclear where the limitations of this technology are in the BIA context. Thus, we think the bioimaging community urgently needs an openly accessible, quantitative way to measure those capabilities in particular given that LLM technology is also developing rapidly. We present such a benchmark, based on HumanEval (Chen et al. 2021), an established code-generation benchmark but ours is tailored for scientific questions in the Bio-Image Analysis context.
 
-\begin{figure*}[h]
-\centering
-\includegraphics[width=\textwidth]{../../demo/performance_per_task.png}
-\caption{Explanation comes here.}
-\label{fig:performancepertask}
-\end{figure*}
+\begin{blind}
+   \url{https://github.com/haesleinhuepf/human-eval-bia}
+\end{blind}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -113,10 +111,34 @@ For benchmarking the models, we generated 10 code samples of the 47 test-cases o
 All test-cases, benchmarking code, generated samples and data analysis/visualization notebooks are available open-source in the github repository of the project. All respective software versions are documented  in the environment.yml file in the Github repository:
 https://github.com/haesleinhuepf/human-eval-bia/ 
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=8.5cm]{example_test_case.png}
+\caption{Explanation comes here.}
+\label{fig:exampletestcase}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Results}
 
 Execution of the sampling notebook took approximately 18 hours. The models gpt-3.5-turbo-1106, gpt4-1106-preview and claude-3-opus-20240229 caused costs of 0.23, 5.10 and 20.49, respectively. All other models did not cause direct costs as their API usage was free. Comparing the pass@k measurements reveals that the leading model, gpt-4-1106-preview, managed to answer 42 of the prompts with code that passed the unit tests. It is followed by claude-4-opus-20240229 and gpt-3.5-turbo-1106, with 40 and 28, respectively. These numbers correspond to pass1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Figure 2 and Supplementary Table 1. 
 Detailed analysis of the test-cases, shown in Table 1, highlights that most of the test-cases were solvable by at least one LLM. The positive control, return-hello-world, was solved successfully in almost all cases, expressed with a pass-rate of 100. Only the codellama model failed in 30 of the test runs for this particular test-case. Most advanced test-cases requiring implementation of advanced workflows were not solved by any of the LLMs.  
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8.5cm]{pass_rate_llms.png}
+\caption{Explanation comes here.}
+\label{fig:passratellms}
+\end{figure}
+
+\begin{figure*}[h]
+\centering
+\includegraphics[width=\textwidth]{performance_per_task.png}
+\caption{Explanation comes here.}
+\label{fig:performancepertask}
+\end{figure*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,14 +154,11 @@ Our benchmark is also a single-shot benchmark presenting the prompt to the LLM w
 The test-case selection may introduce a certain bias of the sub-discipline we work in. We mostly work with fluorescence microscopy imaging data, showing nuclei and membranes. Most test-cases are derived from practical situations we come across often. Mid-/long-term we hope that community contributions to the benchmark’s github repository will allow us to reflect the field more broadly. For example, algorithms processing histological, hyperspectral, or super-resolution imaging data, would be welcome in our test-case collection. On the other hand, we consider test-cases without practical relevance in bio-image analysis should not be part of the benchmark. For example, an algorithm implementing image-reconstruction techniques for computed tomography, or image-classification algorithms for natural images, showing cats and dogs, should not be included even though they might fit technically in an image-processing benchmark. Also intentionally, we included test-case and prompts which we presume are currently not solvable by any LLM. With this, the benchmark could serve to guide LLM developers in this field.
 We aim at developing this benchmark further, together with the support by the bio-image analysis community, by adding more test-cases. Furthermore, with the development of the models, we also will adapt the benchmark depending on how LLMs develop. For example, currently upcoming vision-models, LLMs that can take images as input, need to be considered for benchmarking too. The benchmark we presented does not have the capability to test vision-models. Another angle of further development could be efficiency of generated code as proposed earlier (Du et al. 2024). In particular in the context of processing 3D+t fluorescence microscopy imaging data, accelerated image processing techniques can by key (Haase et al. 2020). The presented benchmark could also be used to improve system messages systematically, for example in projects such as napari-chatGPT (Loic A. Royer 2023) and bia-bob projects (Haase, Tischer, and Yamauchi 2024).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion}
 
 We developed a benchmark for measuring LLM performance in generating code for solving BIA task. It can guide end-users to decide which LLM to use and potentially to pay for when using them for bio-image analysis coding tasks. We also consider this benchmark for LLM-developers in our domain as a metric to guide further development. Last but not least: We encourage the community to send pull-requests with new test-cases to the above-mentioned github repository to ensure the benchmark is covering needs in our field widely. This way, we wish to establish a community-driven approach to benchmarking LLMs for BIA. 
-
-\section{Acknowledgements}
-RH acknowledges the financial support by the Federal Ministry of Education and Research of Germany and by Sächsische Staatsministerium für Wissenschaft, Kultur und Tourismus in the programme Center of Excellence for AI-research „Center for Scalable Data Analytics and Artificial Intelligence Dresden/Leipzig“, project identification number: ScaDS.AI.
-Helmholtz AI and the Jülich Supercomputing Centre deserve acknowledgement for providing the blablador infrastructure for testing the mistral model.
 
 
 
@@ -163,10 +182,8 @@ The use of \BibTeX\ is highly recommended.
 %%% This will be omitted in doubleblind mode.
 
 \begin{ack}
-By using the \texttt{ack} environment to insert your (optional) 
-acknowledgements, you can ensure that the text is suppressed whenever 
-you use the \texttt{doubleblind} option. In the final version, 
-acknowledgements may be included on the extra page intended for references.
+RH acknowledges the financial support by the Federal Ministry of Education and Research of Germany and by Sächsische Staatsministerium für Wissenschaft, Kultur und Tourismus in the programme Center of Excellence for AI-research „Center for Scalable Data Analytics and Artificial Intelligence Dresden/Leipzig“, project identification number: ScaDS.AI.
+Helmholtz AI and the Jülich Supercomputing Centre deserve acknowledgement for providing the blablador infrastructure for testing the mistral model.
 \end{ack}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

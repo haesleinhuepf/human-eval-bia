@@ -3,7 +3,7 @@
 This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where minor modifications were made 
 to adapt the evaluation harness for the Bio-image Analysis domain. You find all test cases [listed here](test_cases/readme.md)
 The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 
-"[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374)". You can compare the original code with ours to see modifications [here](https://github.com/haesleinhuepf/human-eval-bia/compare/original_human_eval).
+"[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374)". 
 
 ## Installation
 
@@ -75,6 +75,19 @@ This is how it works under the hood:
 * From the cell with the function definition all code above the docstring, including the docstring, will be stored as prompt. Many prompts from many notebooks will be collected in one `jsonl` file.
 * Given language models will be asked to complete the code by adding python code below which does what the docstring claims.
 * Afterwards, the generated code examples will be executed and the tests will be run to see if the results were correct.
+
+## Our modifications compared to HumanEval
+
+You can compare the original HumanEval code with ours to see modifications [here](https://github.com/haesleinhuepf/human-eval-bia/compare/original_human_eval). The modifications include adding our test cases and jsonl files. Furthermore, on techincal level, we did these modifications to the HumanEval evaluation framework:
+
+* [Fix can't pickle bug
+](https://github.com/haesleinhuepf/human-eval-bia/commit/628fd26d2fd72b040d976819b4e1c7073fa26907). Here we took code provided as [pull-request to the original HumanEval](https://github.com/openai/human-eval/pull/30) repository, which was not merged by the maintaines but seemed reasonable.
+ 
+* [Fix windows-related signal issue](https://github.com/haesleinhuepf/human-eval-bia/commit/8d03cfe7f34505063f3604ffe8db86235d33e437). This modification was necessary to make the evaluation run on Windows. See also the discussion in this [github issue](https://github.com/openai/human-eval/issues/18#issuecomment-1609063376).
+
+* [We disabled reliability_guard](https://github.com/haesleinhuepf/human-eval-bia/commit/56df3b04cbb36441367596d1aad16255d797e09b) because it broke all tests. Different compared to HumanEval, our test-cases involve complex python libraries which do system calls in order to process data. Disabling these calls made our tests fail.
+
+* [We added some code to copy example data to the temporary folder](https://github.com/haesleinhuepf/human-eval-bia/pull/16). This enables us to run tests where the file system is used, e.g. to solve tasks such as "list all image files in a folder". Original HumanEval was not capable of evaluating such questions.
 
 ## Citation
 

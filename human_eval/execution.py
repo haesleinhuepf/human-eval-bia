@@ -11,7 +11,7 @@ import tempfile
 
 def unsafe_execute(problem, completion, result, timeout):
 
-    with create_tempdir():
+    with create_tempdir("file" in problem["prompt"] or "folder" in problem["prompt"]):
 
         # These system calls are needed when cleaning up tempdir.
         import os
@@ -136,9 +136,14 @@ def swallow_io():
 
 
 @contextlib.contextmanager
-def create_tempdir():
+def create_tempdir(copy_examples: bool = False):
+    import os
+    import shutil
     with tempfile.TemporaryDirectory() as dirname:
-        with chdir(dirname):
+        os.mkdir(dirname + "/test")
+        if copy_examples:
+            shutil.copytree("../example_data", dirname + "/example_data")
+        with chdir(dirname + "/test"):
             yield dirname
 
 

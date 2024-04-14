@@ -4,7 +4,6 @@ numpy
 jupyterlab
 scikit-image
 openai==1.5.0
-bia-bob
 google-cloud-aiplatform
 opencv-python
 pandas
@@ -13,3 +12,6 @@ anthropic
 vedo
 google-generativeai
 umap-learn
+dask
+zarr
+circle-fit

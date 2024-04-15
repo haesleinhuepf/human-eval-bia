@@ -70,6 +70,7 @@ def check(candidate):
 ```
 check(sum)
 ```
+* Save the new test-case in a notebook that has the same name as the test, so that people can find it easily. In our case above: `sum.ipynb`.
 * Optional: You can add as many markdown cells as you like to explain the test case.
 
 ## Adding dependencies

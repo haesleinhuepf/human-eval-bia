@@ -127,6 +127,7 @@ dependencies:
       - pandocfilters==1.5.1
       - parso==0.8.4
       - partd==1.4.1
+      - patsy==0.5.6
       - pillow==10.3.0
       - platformdirs==4.2.0
       - prometheus-client==0.20.0
@@ -168,6 +169,7 @@ dependencies:
       - sniffio==1.3.1
       - soupsieve==2.5
       - stack-data==0.6.3
+      - statsmodels==0.14.1
       - termcolor==2.4.0
       - terminado==0.18.1
       - threadpoolctl==3.4.0
@@ -193,6 +195,7 @@ dependencies:
       - webcolors==1.13
       - webencodings==0.5.1
       - websocket-client==1.7.0
+      - xarray==2024.3.0
       - zarr==2.17.2
       - zipp==3.18.1
 prefix: C:\Users\haase\mambaforge\envs\heb

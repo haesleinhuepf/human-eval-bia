@@ -15,3 +15,6 @@ umap-learn
 dask
 zarr
 circle-fit
+statsmodels
+xarray
+pillow

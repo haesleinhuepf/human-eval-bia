@@ -18,3 +18,4 @@ circle-fit
 statsmodels
 xarray
 pillow
+nibabel

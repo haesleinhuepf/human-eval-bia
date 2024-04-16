@@ -19,3 +19,4 @@ statsmodels
 xarray
 pillow
 aicsimageio
+nibabel

@@ -18,4 +18,5 @@ circle-fit
 statsmodels
 xarray
 pillow
+aicsimageio
 nibabel

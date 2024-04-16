@@ -17,6 +17,11 @@ dependencies:
   - xz=5.4.6=h80987f9_0
   - zlib=1.2.13=h5a0b063_0
   - pip:
+      - aicsimageio==4.14.0
+      - aiobotocore==2.5.4
+      - aiohttp==3.9.4
+      - aioitertools==0.11.0
+      - aiosignal==1.3.1
       - annotated-types==0.6.0
       - anthropic==0.25.1
       - anyio==4.3.0
@@ -27,11 +32,13 @@ dependencies:
       - asciitree==0.3.3
       - asttokens==2.4.1
       - async-lru==2.0.4
+      - async-timeout==4.0.3
       - attrs==23.2.0
       - babel==2.14.0
       - beautifulsoup4==4.12.3
       - bia-bob==0.11.1
       - bleach==6.1.0
+      - botocore==1.31.17
       - cachetools==5.3.3
       - certifi==2024.2.2
       - cffi==1.16.0
@@ -46,8 +53,10 @@ dependencies:
       - debugpy==1.8.1
       - decorator==5.1.1
       - defusedxml==0.7.1
+      - distributed==2024.4.1
       - distro==1.9.0
       - docstring-parser==0.16
+      - elementpath==4.4.0
       - exceptiongroup==1.2.0
       - executing==2.0.1
       - fasteners==0.19
@@ -56,7 +65,8 @@ dependencies:
       - fire==0.6.0
       - fonttools==4.51.0
       - fqdn==1.5.1
-      - fsspec==2024.3.1
+      - frozenlist==1.4.1
+      - fsspec==2023.6.0
       - google-ai-generativelanguage==0.6.1
       - google-api-core==2.18.0
       - google-api-python-client==2.125.0
@@ -80,6 +90,7 @@ dependencies:
       - httpx==0.27.0
       - huggingface-hub==0.22.2
       - idna==3.7
+      - imagecodecs==2024.1.1
       - imageio==2.34.0
       - importlib-metadata==7.1.0
       - ipykernel==6.29.4
@@ -87,6 +98,7 @@ dependencies:
       - isoduration==20.11.0
       - jedi==0.19.1
       - jinja2==3.1.3
+      - jmespath==1.0.1
       - joblib==1.4.0
       - json5==0.9.24
       - jsonpointer==2.4
@@ -105,11 +117,14 @@ dependencies:
       - lazy-loader==0.4
       - llvmlite==0.42.0
       - locket==1.0.0
+      - lxml==4.9.4
       - markupsafe==2.1.5
       - matplotlib==3.8.4
       - matplotlib-inline==0.1.6
       - metakernel==0.30.2
       - mistune==3.0.2
+      - msgpack==1.0.8
+      - multidict==6.0.5
       - nbclient==0.10.0
       - nbconvert==7.16.3
       - nbformat==5.10.4
@@ -120,6 +135,8 @@ dependencies:
       - numba==0.59.1
       - numcodecs==0.12.1
       - numpy==1.26.4
+      - ome-types==0.5.1.post1
+      - ome-zarr==0.8.3
       - openai==1.5.0
       - opencv-python==4.9.0.80
       - overrides==7.7.0
@@ -143,8 +160,9 @@ dependencies:
       - pyasn1-modules==0.4.0
       - pyclesperanto-prototype==0.24.2
       - pycparser==2.22
-      - pydantic==2.6.4
-      - pydantic-core==2.16.3
+      - pydantic==2.7.0
+      - pydantic-compat==0.1.2
+      - pydantic-core==2.18.1
       - pygments==2.17.2
       - pynndescent==0.5.12
       - pyopencl==2024.1
@@ -157,10 +175,12 @@ dependencies:
       - pyzmq==25.1.2
       - referencing==0.34.0
       - requests==2.31.0
+      - resource-backed-dask-array==0.1.0
       - rfc3339-validator==0.1.4
       - rfc3986-validator==0.1.1
       - rpds-py==0.18.0
       - rsa==4.9
+      - s3fs==2023.6.0
       - scikit-image==0.23.1
       - scikit-learn==1.4.2
       - scipy==1.13.0
@@ -168,13 +188,15 @@ dependencies:
       - shapely==2.0.3
       - six==1.16.0
       - sniffio==1.3.1
+      - sortedcontainers==2.4.0
       - soupsieve==2.5
       - stack-data==0.6.3
       - statsmodels==0.14.1
+      - tblib==3.0.0
       - termcolor==2.4.0
       - terminado==0.18.1
       - threadpoolctl==3.4.0
-      - tifffile==2024.2.12
+      - tifffile==2023.2.28
       - tinycss2==1.2.1
       - tokenizers==0.15.2
       - tomli==2.0.1
@@ -189,14 +211,19 @@ dependencies:
       - umap-learn==0.5.6
       - uri-template==1.3.0
       - uritemplate==4.1.1
-      - urllib3==2.2.1
+      - urllib3==1.26.18
       - vedo==2024.5.1
       - vtk==9.3.0
       - wcwidth==0.2.13
       - webcolors==1.13
       - webencodings==0.5.1
       - websocket-client==1.7.0
+      - wrapt==1.16.0
       - xarray==2024.3.0
-      - zarr==2.17.2
+      - xmlschema==3.2.1
+      - xsdata==24.3.1
+      - yarl==1.9.4
+      - zarr==2.15.0
+      - zict==3.0.0
       - zipp==3.18.1
 prefix: /Users/nscherf/miniconda3/envs/heb

@@ -142,14 +142,15 @@ All test-cases as human-readable Jupyter Notebooks and packaged as JSONL file, s
 
 \section{Results}
 
-Sampling the LLMs using our prompts took approximately 20 hours in total. The models gpt-3.5-turbo-1106, both gpt-4 models together, and claude-3-opus-20240229 caused costs of \$0.52, \$13.02, and \$24.58, respectively. All other models did not cause direct costs as their API usage was free. Comparing the pass rates visualized in Figure \ref{fig:passratellms} in detail reveals that the three leading models, gpt-4-turbo-2024-04-09, claude-4-opus-20240229 and gpt-4-1106-preview managed to answer with close pass-rates of $47\pm38\%$, $47\pm40\%$ and $46\pm39\%$, respectively. This indicates that these three models perform similarly well. These numbers correspond to pass@1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Supplementary Figure 1.
+Comparing the pass-rates visualized in Figure \ref{fig:passratellms} in detail reveals that the three leading models, gpt-4-turbo-2024-04-09, claude-4-opus-20240229 and gpt-4-1106-preview managed to answer with close pass-rates of $47\pm38\%$, $47\pm40\%$ and $46\pm39\%$, respectively. This indicates that these three models perform similarly well. These numbers correspond to pass@1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Figure \ref{fig:passk}.
 
-Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{fig:fig:performancepertask}, highlights that most of the test-cases were solvable by at least one LLM. The positive control, return\_hello\_world, was solved successfully in almost all cases, expressed with a pass-rate of 1.0. Only the codellama model failed in 4 out of 10 runs for this particular test-case. 
+Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{fig:performancepertask}, highlights that most of the test-cases were solvable by at least one LLM. The positive control, return\_hello\_world, was solved successfully in almost all cases, expressed with a pass-rate of 1.0. Only the codellama model failed in 4 out of 10 runs for this particular test-case. 
 
-Details about how often the LLMs used selected Python libraries is shown in Table \ref{tab:usedlibraries}. For example, the skimage library was used in 22 of our human-written reference codes and thus, appears 220 times. The benchmarked LLMs used skimage just in 96 to 132 cases.
+Details about how often the LLMs used selected Python libraries is shown in Table \ref{tab:usedlibraries}. For example, the skimage library was used in 22 of our human-written reference codes and thus, appears 220 times. The benchmarked LLMs used skimage just in 96 to 132 cases. Also our human-written reference codes were not using opencv, the "cv2" Python package, but the LLMs generated code using "cv2" in 44 to 137 cases.
 
 Common error messages and corresponding counts for each LLM are given in Table \ref{tab:commonerrors}. Diving deeper into the underlying data reveals for example that gemini-pro often leaves out import statements leading to common error messages such as "name 'np' is not defined".
 
+Sampling the LLMs using our prompts took approximately 20 hours in total. The models gpt-3.5-turbo-1106, both gpt-4 models together, and claude-3-opus-20240229 caused costs of \$0.52, \$13.02, and \$24.58, respectively. All other models did not cause direct costs as their API usage was free. 
 
 \begin{figure}[h]
 \centering
@@ -160,6 +161,17 @@ Common error messages and corresponding counts for each LLM are given in Table \
 \newline
 }
 \label{fig:passratellms}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8.5cm]{pass_k_llms_plot.png}
+\caption{Detailed pass@k with $k=1$, $k=5$ and $k=10$ is a way to estimate the chance to retrieve at least on functional code snippet when generating $k$ samples. The corresponding, updated notebook is available online: 
+\url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_by_passk.ipynb}
+\newline
+\newline
+}
+\label{fig:passk}
 \end{figure}
 
 \begin{figure*}[h]
@@ -196,7 +208,7 @@ Common error messages and corresponding counts for each LLM are given in Table \
 
 We presented a benchmark for comparing code generation capabilities of LLMs in the Bio-Image Analysis context. Such benchmarks are crucial to decide , e.g. if and how to apply this technology in routine projects, training or advanced applications. 
 It shall be mentioned that we did not use any code-completion tools, such as github co-pilot, to write the test-cases. It is necessary to not use such LLM-based tools while writing the test-cases, because otherwise we might introduce a bias towards underlying LLMs. For example, github-copilot is based on chatGPT. If the test-cases were written using it, the benchmark might misleadingly reveal better performance of chatGPT.
-Inspecting the detailed reports for which test-cases were not solved by any LLM also revealed a couple of cases, which are considered simple, but still were not solvable. Examples are list\_files\_in\_folder, open\_image\_return\_dimensions and rgb\_to\_grey\_transform. Modifying such test-cases now, after a first benchmark has been executed, must be done carefully. A peer-review scheme, e.g. using github pull-requests, is recommended to make sure good scientific practice is maintained. Additionally, we provide tools that enable to detect if the LLMs are attempting to use Python libraries which are not installed yet. These can be added and the evaluation step can be repeated. As we encourage to only add test-cases that can be implemented with common Python libraries, the manual effort for this quality assurance step is limited. When maintaining this benchmark mid-/long-term modifications should be done with care, to not give advantages to specific LLMs.
+Inspecting the detailed reports for which test-cases were not solved by any LLM also revealed a couple of cases, which are considered simple, but LLMs did not solve them. Examples are deconvolve\_image, extract\_surface\_measure\_area and open\_image\_read\_voxel\_size. Adding new test-cases and modifying such yet-failing test-cases, after a first benchmark has been executed, must be done carefully. A peer-review scheme, e.g. using Github pull-requests, is recommended to make sure good scientific practice is maintained. We provide a pull-request template with a short questionaire to support this effort. Additionally, we provide tools that enable to detect if the LLMs are attempting to use Python libraries which are not installed yet. These can be added and the evaluation step can be repeated. As we encourage to only add test-cases that can be implemented with common Python libraries, the manual effort for this quality assurance step is limited. When maintaining this benchmark mid-/long-term modifications should be done with care, to not give advantages to specific LLMs.
 We limited sample generation for the benchmarking to 10 samples per LLM per test-case. pass@k analysis was done using k=1, k=5 and k=10. The established standard set by \citep{chen2021evaluating} is 200 samples and k=1, k=10 and k=100. As our benchmark is in early development (you are reading a preprint), we considered drawing 200 samples as not well-invested compute time and unnecessary costs. Once the benchmark contains more test-cases and models, this decision may be revised. 
 The estimated costs also demonstrate the potential of the technology. Requested code is commonly served within seconds, and drawing hundreds samples from the paid-per-prompt models causes minimal costs depending on the used model. When using LLMs on a daily basis, it appears unreasonable to draw hundreds of samples. Hence, using LLMs for BIA code generation is affordable and cost-efficient.
 Our benchmark is a single-shot benchmark presenting the prompt to the LLM with no history of a former conversation. In daily use, one can interact with LLMs using chat-interfaces and iteratively engineer a prompt. Thus, the tested LLMs may be more capable than measured in our experiment, when used in a chat scenario.

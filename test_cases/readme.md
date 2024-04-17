@@ -1,6 +1,6 @@
 
 # List of use-cases
-This list of 47 use-cases is auto-generated. Do not modify this file.
+This list of 57 use-cases is auto-generated. Do not modify this file.
 
 
 * [apply_otsu_threshold_and_count_postiive_pixels](apply_otsu_threshold_and_count_postiive_pixels.ipynb): 
@@ -10,6 +10,23 @@ This list of 47 use-cases is auto-generated. Do not modify this file.
         
 * [binary_closing](binary_closing.ipynb): 
     Applies binary closing to a binary_image with a square footprint with a given radius.
+    
+        
+* [binary_skeleton](binary_skeleton.ipynb): 
+    Applies skeletonization to a 2D binary image.
+    
+        
+* [bland_altman](bland_altman.ipynb): 
+    Takes two specified columns from a given dataframe and applies Bland-Altman-Analysis to them.
+    Therefore, it adds two new columns, one called 'mean' containing the mean of the two corresponding values,
+    and one called 'diff' containing the difference between the two.
+    
+        
+* [combine_columns_of_tables](combine_columns_of_tables.ipynb): 
+    This function combines to dataframes and makes sure the data is merged 
+    using the given index column, which must be present in both dataframes.
+    The dataframes should be merged in a way that no data is lost and missing
+    fields are filled with NaN.
     
         
 * [convex_hull_measure_area](convex_hull_measure_area.ipynb): 
@@ -63,6 +80,12 @@ This list of 47 use-cases is auto-generated. Do not modify this file.
     and returns the surface area of the object.
     
         
+* [fit_circle](fit_circle.ipynb): 
+    Implements 2D circle fitting
+    Input: Collection of 2d points, represented as a list of lists [ [x0,y0], [x1,y1], ... ]  
+    Output: Tuple: xc, yc, radius
+    
+        
 * [label_binary_image_and_count_labels](label_binary_image_and_count_labels.ipynb): 
     Consumes as input a binary image, applies connected component labeling to it, 
     counts the labeled objects and returns their count as single number.
@@ -80,6 +103,10 @@ This list of 47 use-cases is auto-generated. Do not modify this file.
         
 * [map_pixel_count_of_labels](map_pixel_count_of_labels.ipynb): 
     Takes a label_image, determines the pixel-count per label and creates an image where the label values are replaced by the corresponding pixel count.
+    
+        
+* [mask_image](mask_image.ipynb): 
+    Takes a 2D input image and a 2D binary mask image, then applies the mask to the input image and returns the result.
     
         
 * [maximum_intensity_projection](maximum_intensity_projection.ipynb): 
@@ -122,14 +149,35 @@ This list of 47 use-cases is auto-generated. Do not modify this file.
     with measurements for area, perimeter and mean_intensity.
     
         
+* [open_image_read_voxel_size](open_image_read_voxel_size.ipynb): 
+    Reads an image file and return its voxel size in Z-Y-X order.
+    
+        
 * [open_image_return_dimensions](open_image_return_dimensions.ipynb): 
     Opens an image and returns its dimensions
+    
+        
+* [open_nifti_image](open_nifti_image.ipynb): 
+    This function loads a nifti image from the file at image_location and returns the image data as a numpy array. 
+    
+        
+* [open_zarr](open_zarr.ipynb): 
+    Opens a zarr file and returns the array
     
         
 * [pair_wise_correlation_matrix](pair_wise_correlation_matrix.ipynb): 
     Takes a pandas dataframe and computes for all columns their Pearson's correlation coefficient
     for all columns in the dataframe. For n columns, this is a n x n matrix of coefficients.
     The matrix is returned as dataframe.
+    
+        
+* [radial_intensity_profile](radial_intensity_profile.ipynb): 
+    Computes the radial intensity profile of an image around a given coordinate
+    Inputs:
+    - image: 2d numpy array
+    - xy, yc: the center coordinates
+    Output:
+    - an array containing the average intensities
     
         
 * [region_growing_segmentation](region_growing_segmentation.ipynb): 
@@ -179,35 +227,17 @@ This list of 47 use-cases is auto-generated. Do not modify this file.
     Performs a maximum intensity projection along the first axis of an image.
     
         
+* [tiled_image_processing](tiled_image_processing.ipynb): 
+    Apply a maximum filter with a given radius to the image using a tile-by-tile strategy.
+    The tile_size denotes the size of the tiles in X and Y.
+    
+        
 * [transpose_image_axes](transpose_image_axes.ipynb): 
     Transposes the first two axes of an image.
     
         
 * [t_test](t_test.ipynb): 
     Takes two specified columns from a given dataframe and applies a paired T-test to it to determine the p-value.
-    
-        
-* [worflow_segmentation_counting](worflow_segmentation_counting.ipynb): 
-    This function segments objects in an image with intensity above average 
-    and returns their count.
-    
-        
-* [worflow_segmentation_measurement_summary](worflow_segmentation_measurement_summary.ipynb): 
-    This function implements a workflow consisting of these steps:
-    * threshold intensity input image using Otsu's method
-    * label connected components
-    * measure area of the labeled objects
-    * determine mean area of all objects
-    
-        
-* [worflow_watershed_segmentation_correction_measurement](worflow_watershed_segmentation_correction_measurement.ipynb): 
-    This function implements a workflow consisting of these steps:
-    * blurs the image a bit
-    * detect local minima in the blurred image
-    * apply watershed segmentation flooding the blurred image from the 
-      detected minima to retrieve a label image
-    * remove all objects which touch the image border
-    * measure the area of all remaining objects together
     
         
 * [workflow_batch_process_folder_count_labels](workflow_batch_process_folder_count_labels.ipynb): 
@@ -223,6 +253,19 @@ This list of 47 use-cases is auto-generated. Do not modify this file.
     The function returns a dataframe with five columns: min_intensity, mean_intensity, max_intensity, label and filename.
     
         
+* [workflow_segmentation_counting](workflow_segmentation_counting.ipynb): 
+    This function segments objects in an image with intensity above average 
+    and returns their count.
+    
+        
+* [workflow_segmentation_measurement_summary](workflow_segmentation_measurement_summary.ipynb): 
+    This function implements a workflow consisting of these steps:
+    * threshold intensity input image using Otsu's method
+    * label connected components
+    * measure area of the labeled objects
+    * determine mean area of all objects
+    
+        
 * [workflow_segment_measure_umap](workflow_segment_measure_umap.ipynb): 
     This function takes a single channel intensity image, 
     segments objects with intensity above half the maximum intensity, 
@@ -231,5 +274,15 @@ This list of 47 use-cases is auto-generated. Do not modify this file.
     and produces a UMAP from the given measurements. 
     The two UMAP vectors are saved as `umap0` and `umap1` togther with the measurements in a dataframe. 
     The function returns this dataframe.
+    
+        
+* [workflow_watershed_segmentation_correction_measurement](workflow_watershed_segmentation_correction_measurement.ipynb): 
+    This function implements a workflow consisting of these steps:
+    * blurs the image a bit
+    * detect local minima in the blurred image
+    * apply watershed segmentation flooding the blurred image from the 
+      detected minima to retrieve a label image
+    * remove all objects which touch the image border
+    * measure the area of all remaining objects together
     
         

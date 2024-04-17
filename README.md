@@ -38,6 +38,7 @@ To reproduce our benchmarks, you can go through the notebooks provided in the `/
 * [Create generated code samples from chatGPT/gemini/mistral/codellama/...](demo/create_samples.ipynb)
 * [Evaluate samples by executing code](demo/evaluate_samples.ipynb)
 * [Summarize evaluation](demo/summarize_evaluation.ipynb)
+* [Detect missing requirements](demo/detect_missing_requirements.ipynb): In case this notebook lists missing requirements, that can be installed, the benchmark maintainers may add those requirements and run the evaluation step again.
 
 ## Extending the benchmark
 
@@ -69,7 +70,21 @@ def check(candidate):
 ```
 check(sum)
 ```
+* Save the new test-case in a notebook that has the same name as the test, so that people can find it easily. In our case above: `sum.ipynb`.
 * Optional: You can add as many markdown cells as you like to explain the test case.
+
+## Adding dependencies
+
+We aim at collecting all Python libraries that LLMs are capable of using in the bio-image analysis context in the [requirements.txt](requirements.txt) file. Additionally, for documentation purposes, we want to document in which environment the last evaluation was executed. Thus, also an environment.yml file needs to be updated, in particular when requirements change. If the new test-case requires specific Python libraries to be installed, please add them to the [requirements.txt](requirements.txt). 
+Also update the [environment.yml](environment.yml) file using this command:
+
+```
+conda env export > environment.yml 
+```
+
+Submit both files together with your pull-request. That way we can see how the environment changes when merging a pull-request.
+
+## How it works
 
 This is how it works under the hood:
 * From the cell with the function definition all code above the docstring, including the docstring, will be stored as prompt. Many prompts from many notebooks will be collected in one `jsonl` file.

@@ -1,37 +1,44 @@
 name: heb
 channels:
-  - conda-forge
+  - defaults
 dependencies:
-  - bzip2=1.0.8=hcfcfb64_5
-  - ca-certificates=2024.2.2=h56e8100_0
-  - libffi=3.4.2=h8ffe710_5
-  - libsqlite=3.45.2=hcfcfb64_0
-  - libzlib=1.2.13=hcfcfb64_5
-  - openssl=3.2.1=hcfcfb64_1
-  - pip=24.0=pyhd8ed1ab_0
-  - python=3.10.14=h4de0772_0_cpython
-  - setuptools=69.2.0=pyhd8ed1ab_0
-  - tk=8.6.13=h5226925_1
-  - ucrt=10.0.22621.0=h57928b3_0
-  - vc=14.3=hcf57466_18
-  - vc14_runtime=14.38.33130=h82b7239_18
-  - vs2015_runtime=14.38.33130=hcb4865c_18
-  - wheel=0.43.0=pyhd8ed1ab_1
-  - xz=5.2.6=h8d14728_0
+  - bzip2=1.0.8=h80987f9_5
+  - ca-certificates=2024.3.11=hca03da5_0
+  - libffi=3.4.4=hca03da5_0
+  - ncurses=6.4=h313beb8_0
+  - openssl=3.0.13=h1a28f6b_0
+  - pip=23.3.1=py310hca03da5_0
+  - python=3.10.14=hb885b13_0
+  - readline=8.2=h1a28f6b_0
+  - setuptools=68.2.2=py310hca03da5_0
+  - sqlite=3.41.2=h80987f9_0
+  - tk=8.6.12=hb8d0fd4_0
+  - wheel=0.41.2=py310hca03da5_0
+  - xz=5.4.6=h80987f9_0
+  - zlib=1.2.13=h5a0b063_0
   - pip:
+      - aicsimageio==4.14.0
+      - aiobotocore==2.5.4
+      - aiohttp==3.9.4
+      - aioitertools==0.11.0
+      - aiosignal==1.3.1
       - annotated-types==0.6.0
       - anthropic==0.25.1
       - anyio==4.3.0
+      - appnope==0.1.4
       - argon2-cffi==23.1.0
       - argon2-cffi-bindings==21.2.0
       - arrow==1.3.0
       - asciitree==0.3.3
       - asttokens==2.4.1
       - async-lru==2.0.4
+      - async-timeout==4.0.3
       - attrs==23.2.0
       - babel==2.14.0
       - beautifulsoup4==4.12.3
+      - bia-bob==0.11.1
       - bleach==6.1.0
+      - botocore==1.31.17
       - cachetools==5.3.3
       - certifi==2024.2.2
       - cffi==1.16.0
@@ -39,7 +46,6 @@ dependencies:
       - circle-fit==0.2.1
       - click==8.1.7
       - cloudpickle==3.0.0
-      - colorama==0.4.6
       - comm==0.2.2
       - contourpy==1.2.1
       - cycler==0.12.1
@@ -47,8 +53,10 @@ dependencies:
       - debugpy==1.8.1
       - decorator==5.1.1
       - defusedxml==0.7.1
+      - distributed==2024.4.1
       - distro==1.9.0
       - docstring-parser==0.16
+      - elementpath==4.4.0
       - exceptiongroup==1.2.0
       - executing==2.0.1
       - fasteners==0.19
@@ -57,7 +65,8 @@ dependencies:
       - fire==0.6.0
       - fonttools==4.51.0
       - fqdn==1.5.1
-      - fsspec==2024.3.1
+      - frozenlist==1.4.1
+      - fsspec==2023.6.0
       - google-ai-generativelanguage==0.6.1
       - google-api-core==2.18.0
       - google-api-python-client==2.125.0
@@ -81,6 +90,7 @@ dependencies:
       - httpx==0.27.0
       - huggingface-hub==0.22.2
       - idna==3.7
+      - imagecodecs==2024.1.1
       - imageio==2.34.0
       - importlib-metadata==7.1.0
       - ipykernel==6.29.4
@@ -88,8 +98,9 @@ dependencies:
       - isoduration==20.11.0
       - jedi==0.19.1
       - jinja2==3.1.3
+      - jmespath==1.0.1
       - joblib==1.4.0
-      - json5==0.9.25
+      - json5==0.9.24
       - jsonpointer==2.4
       - jsonschema==4.21.1
       - jsonschema-specifications==2023.12.1
@@ -97,7 +108,7 @@ dependencies:
       - jupyter-core==5.7.2
       - jupyter-events==0.10.0
       - jupyter-lsp==2.2.5
-      - jupyter-server==2.14.0
+      - jupyter-server==2.13.0
       - jupyter-server-terminals==0.5.3
       - jupyterlab==4.1.6
       - jupyterlab-pygments==0.3.0
@@ -106,19 +117,26 @@ dependencies:
       - lazy-loader==0.4
       - llvmlite==0.42.0
       - locket==1.0.0
+      - lxml==4.9.4
       - markupsafe==2.1.5
       - matplotlib==3.8.4
       - matplotlib-inline==0.1.6
+      - metakernel==0.30.2
       - mistune==3.0.2
+      - msgpack==1.0.8
+      - multidict==6.0.5
       - nbclient==0.10.0
       - nbconvert==7.16.3
       - nbformat==5.10.4
       - nest-asyncio==1.6.0
       - networkx==3.3
+      - nibabel==5.2.1
       - notebook-shim==0.2.4
       - numba==0.59.1
       - numcodecs==0.12.1
       - numpy==1.26.4
+      - ome-types==0.5.1.post1
+      - ome-zarr==0.8.3
       - openai==1.5.0
       - opencv-python==4.9.0.80
       - overrides==7.7.0
@@ -127,6 +145,8 @@ dependencies:
       - pandocfilters==1.5.1
       - parso==0.8.4
       - partd==1.4.1
+      - patsy==0.5.6
+      - pexpect==4.9.0
       - pillow==10.3.0
       - platformdirs==4.2.0
       - prometheus-client==0.20.0
@@ -134,12 +154,14 @@ dependencies:
       - proto-plus==1.23.0
       - protobuf==4.25.3
       - psutil==5.9.8
+      - ptyprocess==0.7.0
       - pure-eval==0.2.2
       - pyasn1==0.6.0
       - pyasn1-modules==0.4.0
       - pyclesperanto-prototype==0.24.2
       - pycparser==2.22
       - pydantic==2.7.0
+      - pydantic-compat==0.1.2
       - pydantic-core==2.18.1
       - pygments==2.17.2
       - pynndescent==0.5.12
@@ -149,16 +171,16 @@ dependencies:
       - python-json-logger==2.0.7
       - pytools==2024.1.1
       - pytz==2024.1
-      - pywin32==306
-      - pywinpty==2.0.13
       - pyyaml==6.0.1
       - pyzmq==25.1.2
       - referencing==0.34.0
       - requests==2.31.0
+      - resource-backed-dask-array==0.1.0
       - rfc3339-validator==0.1.4
       - rfc3986-validator==0.1.1
       - rpds-py==0.18.0
       - rsa==4.9
+      - s3fs==2023.6.0
       - scikit-image==0.23.1
       - scikit-learn==1.4.2
       - scipy==1.13.0
@@ -166,12 +188,15 @@ dependencies:
       - shapely==2.0.3
       - six==1.16.0
       - sniffio==1.3.1
+      - sortedcontainers==2.4.0
       - soupsieve==2.5
       - stack-data==0.6.3
+      - statsmodels==0.14.1
+      - tblib==3.0.0
       - termcolor==2.4.0
       - terminado==0.18.1
       - threadpoolctl==3.4.0
-      - tifffile==2024.2.12
+      - tifffile==2023.2.28
       - tinycss2==1.2.1
       - tokenizers==0.15.2
       - tomli==2.0.1
@@ -186,13 +211,19 @@ dependencies:
       - umap-learn==0.5.6
       - uri-template==1.3.0
       - uritemplate==4.1.1
-      - urllib3==2.2.1
+      - urllib3==1.26.18
       - vedo==2024.5.1
       - vtk==9.3.0
       - wcwidth==0.2.13
       - webcolors==1.13
       - webencodings==0.5.1
       - websocket-client==1.7.0
-      - zarr==2.17.2
+      - wrapt==1.16.0
+      - xarray==2024.3.0
+      - xmlschema==3.2.1
+      - xsdata==24.3.1
+      - yarl==1.9.4
+      - zarr==2.15.0
+      - zict==3.0.0
       - zipp==3.18.1
-prefix: C:\Users\haase\mambaforge\envs\heb
+prefix: /Users/nscherf/miniconda3/envs/heb

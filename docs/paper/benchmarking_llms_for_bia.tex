@@ -142,10 +142,13 @@ All test-cases as human-readable Jupyter Notebooks and packaged as JSONL file, s
 
 \section{Results}
 
-TODO
-Sampling the LLMs using our prompts took approximately 18 hours in total. The models gpt-3.5-turbo-1106, both gpt-4 models together, and claude-3-opus-20240229 caused costs of \$0.52, \$13.02, and \$24.58, respectively. All other models did not cause direct costs as their API usage was free. Comparing the pass rates visualized in Figure \ref{fig:passratellms} reveals that the leading model, gpt-4-1106-preview, managed to answer 42\% of the prompts with code that passed the unit tests. It is followed by claude-4-opus-20240229 and TODO, with 40\% and 28\%, respectively. These numbers correspond to pass@1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Supplementary Figure 1. TODO
+Sampling the LLMs using our prompts took approximately 20 hours in total. The models gpt-3.5-turbo-1106, both gpt-4 models together, and claude-3-opus-20240229 caused costs of \$0.52, \$13.02, and \$24.58, respectively. All other models did not cause direct costs as their API usage was free. Comparing the pass rates visualized in Figure \ref{fig:passratellms} in detail reveals that the three leading models, gpt-4-turbo-2024-04-09, claude-4-opus-20240229 and gpt-4-1106-preview managed to answer with close pass-rates of $47\pm38\%$, $47\pm40\%$ and $46\pm39\%$, respectively. This indicates that these three models perform similarly well. These numbers correspond to pass@1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Supplementary Figure 1.
 
-Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{fig:fig:performancepertask}, highlights that most of the test-cases were solvable by at least one LLM. The positive control, return\_hello\_world, was solved successfully in almost all cases, expressed with a pass-rate of 1.0. Only the codellama model failed in 4 out of 10 runs for this particular test-case. Details about which LLM used which Python libraries how often are given in Table \ref{tab:usedlibraries}. Common error messages and corresponding counts how often these were observed when evaluating the generated code are given in Table \ref{tab:commonerrors}.
+Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{fig:fig:performancepertask}, highlights that most of the test-cases were solvable by at least one LLM. The positive control, return\_hello\_world, was solved successfully in almost all cases, expressed with a pass-rate of 1.0. Only the codellama model failed in 4 out of 10 runs for this particular test-case. 
+
+Details about how often the LLMs used selected Python libraries is shown in Table \ref{tab:usedlibraries}. For example, the skimage library was used in 22 of our human-written reference codes and thus, appears 220 times. The benchmarked LLMs used skimage just in 96 to 132 cases.
+
+Common error messages and corresponding counts for each LLM are given in Table \ref{tab:commonerrors}. Diving deeper into the underlying data reveals for example that gemini-pro often leaves out import statements leading to common error messages such as "name 'np' is not defined".
 
 
 \begin{figure}[h]
@@ -173,7 +176,7 @@ Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{f
 
 \begin{table}[h]
 \input{library_counts_table.tex}
-\caption{Used Python libraries in generated code from the tested LLMs. If one generated code snippet contained the same library twice, it is only counted once. For example, codellama, mistral and gemini-pro generated code using “skimage” less often than the other LLMs. Also in our reference code we did not use “cv2”, which was used regularly by all tested LLMs. The Notebook for generating this table can be found online: \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_used_libraries.ipynb}
+\caption{Used Python libraries in generated code from the tested LLMs. If one generated code snippet contained the same library twice, it is only counted once. The Notebook for generating this table can be found online: \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_used_libraries.ipynb}
 \newline }
 \label{tab:usedlibraries}
 \end{table}

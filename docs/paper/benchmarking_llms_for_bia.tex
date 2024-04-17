@@ -29,6 +29,19 @@
 \usepackage{color}
 \usepackage{hyperref}
 
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\newcolumntype{R}[2]{%
+    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand*\rot{\multicolumn{1}{R{90}{1em}}}% no optional argument here, please!
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Define any theorem-like environments you require here.
@@ -75,7 +88,7 @@
 
 \author[A,B]{\fnms{Robert}~\snm{Haase}\orcid{0000-0001-5949-2327}\thanks{Corresponding Author. Email: robert.haase@uni-leipzig.de}}
 \author[C]{\fnms{Christian}~\snm{Tischer}\orcid{0000-0003-4105-1990}}
-\author[D,B]{\fnms{Nico}~\snm{Scherf}} 
+\author[D,B]{\fnms{Nico}~\snm{Scherf} \orcid{0000-0003-4003-9121}} 
 
 \address[A]{Data Science Center, Leipzig University, Humboldtstra{\ss}e 25, 04105 Leipzig, Germany}
 \address[B]{Center for Scalable Data Analytics and Artificial Intelligence (ScaDS.AI) Dresden / Leipzig}
@@ -132,7 +145,7 @@ All test-cases as human-readable Jupyter Notebooks and packaged as JSONL file, s
 TODO
 Sampling the LLMs using our prompts took approximately 18 hours in total. The models gpt-3.5-turbo-1106, gpt-4-1106-preview, gpt-4-2024-04-09 and claude-3-opus-20240229 caused costs of \$0.23, \$5.10, TODO and \$20.49, respectively. All other models did not cause direct costs as their API usage was free. Comparing the pass rates visualized in Figure \ref{fig:passratellms} reveals that the leading model, gpt-4-1106-preview, managed to answer 42\% of the prompts with code that passed the unit tests. It is followed by claude-4-opus-20240229 and TODO, with 40\% and 28\%, respectively. These numbers correspond to pass@1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Supplementary Figure 1. TODO
 
-Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{fig:fig:performancepertask}, highlights that most of the test-cases were solvable by at least one LLM. The positive control, return\_hello\_world, was solved successfully in almost all cases, expressed with a pass-rate of 1.0. Only the codellama model failed in 30\% of the test runs for this particular test-case. Details about which LLM used which Python libraries how often are given in Figure \ref{fig:usedpythonlibs}. Common error messages and corresponding counts how often these were observed when evaluating the generated code are given in Table  TODO.
+Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{fig:fig:performancepertask}, highlights that most of the test-cases were solvable by at least one LLM. The positive control, return\_hello\_world, was solved successfully in almost all cases, expressed with a pass-rate of 1.0. Only the codellama model failed in 30\% of the test runs for this particular test-case. Details about which LLM used which Python libraries how often are given in Table \ref{tab:usedlibraries}. Common error messages and corresponding counts how often these were observed when evaluating the generated code are given in Table \ref{tab:commonerrors}.
 
 
 \begin{figure}[h]
@@ -157,20 +170,22 @@ Detailed pass rate analysis of the individual test-cases, shown in Figure \ref{f
 \label{fig:performancepertask}
 \end{figure*}
 
-\begin{figure*}[h]
-\centering
-\includegraphics[width=\textwidth]{used_python_libs.png}
-\caption{TODO
-\url{TODOhttps://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_by_case.ipynb}
-\newline
-\newline
-}
-\label{fig:usedpythonlibs}
-\end{figure*}
 
+\begin{table}[h]
+\input{library_counts_table.tex}
+\caption{Used Python libraries in generated code from the tested LLMs. If one generated code snippet contained the same library twice, it is only counted once. For example, codellama, mistral and gemini-pro generated code using “skimage” less often than the other LLMs. Also in our reference code we did not use “cv2”, which was used regularly by all tested LLMs. The Notebook for generating this table can be found online: \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_used_libraries.ipynb} }
+\label{tab:usedlibraries}
+\end{table}
+
+
+\begin{table}[h]
+\input{error_counts_table.tex}
+\caption{Snippets of common error messages and how often these were observed when evaluating the generated code from tested models. The Notebook for generating this table can be found online: \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_error_messages.ipynb} }
+\label{tab:commonerrors}
+\end{table}
 %TODO:
 % 
-%Table 1: Snippets of common error messages and how often these were observed when evaluating the generated code. See %https://github.com/haesleinhuepf/human-eval-bia/blob/3e666cf3f3594c255e10a96b68fda58e549d2e26/demo/summarize_error_messages.ipynb 
+%
 
 
 
@@ -182,14 +197,14 @@ We presented a benchmark for comparing code generation capabilities of LLMs in t
 It shall be mentioned that we did not use any code-completion tools, such as github co-pilot, to write the test-cases. It is necessary to not use such LLM-based tools while writing the test-cases, because otherwise we might introduce a bias towards underlying LLMs. For example, github-copilot is based on chatGPT. If the test-cases were written using it, the benchmark might misleadingly reveal better performance of chatGPT.
 Inspecting the detailed reports for which test-cases were not solved by any LLM also revealed a couple of cases, which are considered simple, but still were not solvable. Examples are list\_files\_in\_folder, open\_image\_return\_dimensions and rgb\_to\_grey\_transform. Modifying such test-cases now, after a first benchmark has been executed, must be done carefully. A peer-review scheme, e.g. using github pull-requests, is recommended to make sure good scientific practice is maintained. Additionally, we provide tools that enable to detect if the LLMs are attempting to use Python libraries which are not installed yet. These can be added and the evaluation step can be repeated. As we encourage to only add test-cases that can be implemented with common Python libraries, the manual effort for this quality assurance step is limited. When maintaining this benchmark mid-/long-term modifications should be done with care, to not give advantages to specific LLMs.
 We limited sample generation for the benchmarking to 10 samples per LLM per test-case. pass@k analysis was done using k=1, k=5 and k=10. The established standard set by \citep{chen2021evaluating} is 200 samples and k=1, k=10 and k=100. As our benchmark is in early development (you are reading a preprint), we considered drawing 200 samples as not well-invested compute time and unnecessary costs. Once the benchmark contains more test-cases and models, this decision may be revised. 
-The measured costs also demonstrate the potential of the technology. Requested code is commonly served within seconds, and drawing 300 samples from the 3 paid-per-prompt models causes minimal costs depending on the used model. When using LLMs on a daily basis, it appears unreasonable to draw hundreds of samples. Hence, using LLMs for BIA code generation is affordable and cost-efficient.
+The estimated costs also demonstrate the potential of the technology. Requested code is commonly served within seconds, and drawing hundreds samples from the paid-per-prompt models causes minimal costs depending on the used model. When using LLMs on a daily basis, it appears unreasonable to draw hundreds of samples. Hence, using LLMs for BIA code generation is affordable and cost-efficient.
 Our benchmark is a single-shot benchmark presenting the prompt to the LLM with no history of a former conversation. In daily use, one can interact with LLMs using chat-interfaces and iteratively engineer a prompt. Thus, the tested LLMs may be more capable than measured in our experiment, when used in a chat scenario.
 The test-case selection may introduce a certain bias of the sub-discipline we work in. We mostly work with fluorescence microscopy imaging data, showing nuclei and membranes. Most test-cases are derived from practical situations we come across often. Mid-/long-term we hope that community contributions to the benchmark’s github repository will allow us to reflect the field more broadly. For example, algorithms processing histological, hyperspectral, or super-resolution imaging data, would be welcome in our test-case collection. On the other hand, we consider test-cases without practical relevance in bio-image analysis should not be part of the benchmark. For example, an algorithm implementing image-reconstruction techniques for computed tomography, or image-classification algorithms for natural images, showing cats and dogs, should not be included even though they might fit technically in an image-processing benchmark. Also intentionally, we included test-case and prompts which we presume are currently not solvable by any LLM. With this, the benchmark could serve to guide LLM developers in this field.
 In our selection of tested LLMs we see two groups of models, and one group seems more capable than the other, expressed by twice as high pass rates. There might be multiple reasons for this: 1) The tested open-source models are much smaller than the tested commercial models, e.g. codellama has 7B parameters and the GPT models are about two orders of magnitude larger. Obviously, model size limits LLM capabilities. 2) In Bio-image Analysis, we use some specific Python libraries, such as aicsimageio \citep{aicsimageio}, vedo \citep{musy2024} or pyclesperanto\_prototype \citep{robert_haase_2023_10432619}, which might not be mentioned in the training data of some models. On the other hand, in natural image processing other libraries such as OpenCV \citep{itseez2015opencv} are used more often than in our field, where scikit-image \citep{scikit-image} is more often used for similar purposes. As natural image processing is also a vivid research field, the LLM’s training data may contain more use-cases from that field. Also the DS-1000 benchmark \citep{lai2022ds1000}, focusing on general data-science use-cases, does not cover scikit-image or opencv. Hence, the test-cases in our benchmark may enable the LLM community to train models covering our BIA use-cases and the libraries established in our field better.
 We aim at developing this benchmark further, together with the support by the bio-image analysis community, by adding more test-cases. Furthermore, with the development of the models, we also will adapt the benchmark depending on how LLMs develop. For example, currently upcoming vision-models, LLMs that can take images as input, need to be considered for benchmarking too. The benchmark we presented does not have the capability to test vision-models. Another angle of further development could be efficiency of generated code as proposed earlier \citep{du2024mercury}. In particular in the context of processing 3D+t fluorescence microscopy imaging data, accelerated image processing techniques can by key \citep{Haase2020}. 
 \begin{blind}
-The presented benchmark could also be used to improve system messages systematically, for example in projects such as napari-chatGPT \citep{royer2023omega} and bia-bob \citep{haase2024biaBob}.
-\end{blind}
+The presented benchmark could also be used to improve prompts systematically, for example in projects such as napari-chatGPT \citep{royer2023omega} and bia-bob \citep{haase2024biaBob}.
+\end{blind} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

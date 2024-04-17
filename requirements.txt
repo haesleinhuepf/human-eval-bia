@@ -20,3 +20,6 @@ xarray
 pillow
 aicsimageio
 nibabel
+SimpleITK
+trimesh
+itk

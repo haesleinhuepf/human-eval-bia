@@ -34,11 +34,14 @@ disclaimer before running code in a potentially unsafe manner. See the comment i
 > Also note when executing the benchmark using commercial models such as chatGPT or gemini, substantial costs can be caused.
 
 To reproduce our benchmarks, you can go through the notebooks provided in the `/notebooks` directory:
-* [Create benchmarking test case set from notebooks](demo/create_cases.ipynb)
-* [Create generated code samples from chatGPT/gemini/mistral/codellama/...](demo/create_samples.ipynb)
-* [Evaluate samples by executing code](demo/evaluate_samples.ipynb)
-* [Summarize evaluation](demo/summarize_evaluation.ipynb)
+* [Create benchmarking set from notebooks](demo/create_cases.ipynb): Convert notebook files into HumanEval-compatible JSONL files.
+* [Generate code samples from LLMs](demo/create_samples.ipynb): Send prompts to LLMs multiple times and store results in sample_....JSONL files.
+* [Evaluate samples by executing code](demo/evaluate_samples.ipynb): Run the code samples and store the results in _result....JSONL files.
 * [Detect missing requirements](demo/detect_missing_requirements.ipynb): In case this notebook lists missing requirements, that can be installed, the benchmark maintainers may add those requirements and run the evaluation step again.
+* [Summarize pass rates pass@k](demo/summarize_by_passk.ipynb): Draw box-plot with pass-rates for all LLMs.
+* [Summarize pass rates grouped by test-cases](demo/summarize_by_case.ipynb): Visualize for each test-case the pass-rate of all LLMs individually.
+* [Summarize error messages](demo/summarize_error_messages.ipynb): Count common error messages in evaluation responses.
+* [Summarize used Python libraries](demo/summarize_used_libraries.ipynb): Count common Python Libraries in evaluation responses.
 
 ## Extending the benchmark
 

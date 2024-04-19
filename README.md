@@ -19,7 +19,7 @@ Furthermore, we visualize the observed pass-rate per task:
 
 To find out more, please read our [paper draft](docs/paper/benchmarking_llms_for_bia.pdf).
 
-Feedback is welcome, e.g. as [Github issue](/issues).
+Feedback is welcome, e.g. as [Github issue](https://github.com/haesleinhuepf/human-eval-bia/issues).
 
 ## Installation
 

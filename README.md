@@ -58,7 +58,7 @@ To run the benchmark for locally running models, install [Ollama](https://ollama
 
 **This program exists to run untrusted model-generated code. Users are strongly
 encouraged not to do so outside of a robust security sandbox. The [execution
-call](https://github.com/haesleinhuepf/human-eval/blob/master/human_eval/execution.py#L37-L47)
+call](https://github.com/haesleinhuepf/human-eval-bia/blob/master/human_eval/execution.py#L37-L47)
 in `execution.py` is deliberately commented out to ensure users read this
 disclaimer before running code in a potentially unsafe manner. See the comment in
 `execution.py` for more information and instructions.**

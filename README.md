@@ -1,9 +1,25 @@
-# HumanEval for Bio-image Analysis: Hand-Written Evaluation Set 
+# Benchmarking Large Language Models for Bio-Image Analysis Code Generation
 
-This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where minor modifications were made 
-to adapt the evaluation harness for the Bio-image Analysis domain. You find all test cases [listed here](test_cases/readme.md)
+This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where modifications were made 
+to adapt the evaluation harness for the Bio-image Analysis domain. 
 The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 
 "[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374)". 
+
+## Insights
+
+Using the benchmark in this repository, we compared 6 LLMs in their capabilities to generate Bio-image Analysis Python code. 
+Therefore, we defined test-cases [listed here](test_cases/readme.md) which can be used to evaluate functional correctness of bio-image analysis code.
+The pass-rate show in this plot expresses the probability that generated code passed given unit-tests:
+
+![](docs/paper/pass_rate_llms.png)
+
+Furthermore, we visualize the observed pass-rate per task:
+
+![](docs/paper/performance_per_task.png)
+
+To find out more, please read our [paper draft](docs/paper/benchmarking_llms_for_bia.pdf).
+
+Feedback is welcome, e.g. as [Github issue](/issues).
 
 ## Installation
 
@@ -21,11 +37,28 @@ $ pip install -e .
 $ pip install -r requirements.txt
 ```
 
+To run the benchmark for OpenAI-based models, please create an OpenAI API Key as [explained in this blog post](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety).
+
+To run the benchmark for Google gemini models, you need to create a Google Cloud account [here](https://console.cloud.google.com/welcome/) and
+a project within the Google cloud (for billing) [here](https://console.cloud.google.com/projectcreate). 
+You need to store authentication details locally as explained [here](https://cloud.google.com/docs/authentication/provide-credentials-adc#local-dev). 
+This requires installing [Google Cloud CLI](https://cloud.google.com/sdk/docs/install). In very short: run the installer and when asked, activate the "Run gcloud init' checkbox. Or run 'gcloud init' from the terminal yourself. Restart the terminal window.
+After installing Google Cloud CLI, start a terminal and authenticate using: 
+```
+gcloud auth application-default login
+```
+Follow the instructions in the browser. Enter your Project ID (not the name). 
+
+To run the benchmark for the models accessible via  [Helmholtz' blablador service](https://helmholtz-blablador.fz-juelich.de/), which is free for German academics, just get an API key as explained on
+[this page](https://sdlaml.pages.jsc.fz-juelich.de/ai/guides/blablador_api_access/) and store it int your environment as `BLABLADOR_API_KEY` variable.
+
+To run the benchmark for locally running models, install [Ollama](https://ollama.com). We used ollama 0.1.29 for Windows (preview).
+
 ## Usage
 
 **This program exists to run untrusted model-generated code. Users are strongly
 encouraged not to do so outside of a robust security sandbox. The [execution
-call](https://github.com/openai/human-eval/blob/master/human_eval/execution.py#L48-L58)
+call](https://github.com/haesleinhuepf/human-eval/blob/master/human_eval/execution.py#L37-L47)
 in `execution.py` is deliberately commented out to ensure users read this
 disclaimer before running code in a potentially unsafe manner. See the comment in
 `execution.py` for more information and instructions.**

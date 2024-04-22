@@ -17,7 +17,7 @@ Furthermore, we visualize the observed pass-rate per task:
 
 ![](docs/paper/performance_per_task.png)
 
-To find out more, please read our [paper draft](docs/paper/benchmarking_llms_for_bia.pdf).
+To find out more, please read our [preprint](https://www.biorxiv.org/content/10.1101/2024.04.19.590278v1)
 
 Feedback is welcome, e.g. as [Github issue](https://github.com/haesleinhuepf/human-eval-bia/issues).
 
@@ -142,9 +142,21 @@ You can compare the original HumanEval code with ours to see modifications [here
 
 ## Citation
 
-In case you are only using the evaluation code in this repository, consider using and citing [HumanEval](https://github.com/openai/human-eval?tab=readme-ov-file#citation).
-If you are using the Bio-image Analysis evaluation set, please cite the following:
+To cote our work, e.g. if you are using the Bio-image Analysis test-case set, please cite the following:
 
 ```
-todo
+@article {Haase2024.04.19.590278,
+	author = {Robert Haase and Christian Tischer and Nico Scherf},
+	title = {Benchmarking Large Language Models for Bio-Image Analysis Code Generation},
+	elocation-id = {2024.04.19.590278},
+	year = {2024},
+	doi = {10.1101/2024.04.19.590278},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2024/04/21/2024.04.19.590278},
+	eprint = {https://www.biorxiv.org/content/early/2024/04/21/2024.04.19.590278.full.pdf},
+	journal = {bioRxiv}
+}
 ```
+
+
+In case you are only using the evaluation code in this repository, consider using and citing [HumanEval](https://github.com/openai/human-eval?tab=readme-ov-file#citation) instead.

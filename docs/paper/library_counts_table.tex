@@ -1,24 +1,24 @@
-\begin{tabular}{lrrrrrrr}
+\begin{tabular}{lrrrrrrrrrrrrrrrr}
 \toprule
- & \rot{reference} & \rot{gpt-4-turbo-2024-04-09} & \rot{claude-3-opus-20240229} & \rot{gpt-4-1106-preview} & \rot{gpt-3.5-turbo-1106} & \rot{gemini-pro} & \rot{codellama} \\
+ & \rot{reference} & \rot{gpt-4-turbo-2024-04-09} & \rot{claude-3-opus-20240229} & \rot{gpt-4-1106-preview} & \rot{gpt-3.5-turbo-1106} & \rot{llama3-70b-instruct-q4\_0} & \rot{llama3-70b-instruct-q8\_0} & \rot{codegemma-7b-instruct-fp16} & \rot{mixtral-8x22b-instruct-v0.1-q4\_0} & \rot{mixtral-8x7b-instruct-v0.1-q5\_0} & \rot{phi3-3.8b-mini-instruct-4k-fp16} & \rot{codellama-70b-instruct-q4\_0} & \rot{gemini-pro} & \rot{command-r-plus-104b-q4\_0} & \rot{codellama} & \rot{llama3-8b-instruct-fp16} \\
 \midrule
-numpy & 220 & 434 & 453 & 398 & 360 & 165 & 454 \\
-scipy & 70 & 123 & 131 & 141 & 76 & 31 & 114 \\
-skimage & 220 & 129 & 125 & 132 & 115 & 116 & 96 \\
-cv2 & 0 & 63 & 44 & 57 & 144 & 82 & 137 \\
-pandas & 60 & 100 & 99 & 97 & 90 & 52 & 95 \\
-pyclesperanto\_\\ prototype & 40 & 0 & 0 & 0 & 0 & 0 & 0 \\
-vedo & 20 & 0 & 0 & 0 & 0 & 0 & 0 \\
-umap & 20 & 20 & 20 & 20 & 20 & 20 & 20 \\
-dask & 10 & 0 & 0 & 0 & 0 & 0 & 0 \\
-zarr & 10 & 10 & 10 & 10 & 10 & 10 & 10 \\
-circle\_fit & 10 & 0 & 0 & 0 & 1 & 0 & 0 \\
-statsmodels & 0 & 0 & 0 & 0 & 0 & 0 & 2 \\
-xarray & 0 & 1 & 0 & 0 & 0 & 2 & 2 \\
-pillow & 0 & 2 & 0 & 0 & 1 & 0 & 0 \\
-nibabel & 10 & 17 & 10 & 20 & 11 & 10 & 12 \\
-SimpleITK & 0 & 2 & 10 & 1 & 8 & 7 & 1 \\
-trimesh & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
-itk & 0 & 2 & 10 & 0 & 9 & 7 & 1 \\
+numpy & 220 & 434 & 453 & 398 & 360 & 447 & 460 & 298 & 478 & 392 & 450 & 426 & 165 & 412 & 454 & 432 \\
+scipy & 70 & 123 & 131 & 141 & 76 & 144 & 156 & 76 & 168 & 82 & 138 & 118 & 31 & 82 & 114 & 155 \\
+skimage & 220 & 129 & 125 & 132 & 115 & 85 & 98 & 154 & 118 & 102 & 129 & 151 & 116 & 131 & 96 & 68 \\
+cv2 & 0 & 63 & 44 & 57 & 144 & 107 & 85 & 43 & 90 & 76 & 107 & 120 & 82 & 31 & 137 & 192 \\
+pandas & 60 & 100 & 99 & 97 & 90 & 100 & 100 & 74 & 98 & 72 & 99 & 81 & 52 & 89 & 95 & 98 \\
+pyclesperanto\_\\ prototype & 40 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+vedo & 20 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+umap & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 16 & 20 & 19 & 20 & 20 \\
+dask & 10 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 \\
+zarr & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 \\
+circle\_fit & 10 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+statsmodels & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 2 & 0 \\
+xarray & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 & 2 & 4 & 2 & 1 \\
+pillow & 0 & 2 & 0 & 0 & 1 & 4 & 2 & 0 & 3 & 1 & 1 & 1 & 0 & 1 & 0 & 1 \\
+nibabel & 10 & 17 & 10 & 20 & 11 & 20 & 20 & 14 & 11 & 10 & 11 & 10 & 10 & 17 & 12 & 11 \\
+SimpleITK & 0 & 2 & 10 & 1 & 8 & 0 & 0 & 2 & 7 & 10 & 0 & 9 & 7 & 0 & 1 & 0 \\
+trimesh & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+itk & 0 & 2 & 10 & 0 & 9 & 0 & 0 & 4 & 8 & 10 & 0 & 9 & 7 & 0 & 1 & 2 \\
 \bottomrule
 \end{tabular}

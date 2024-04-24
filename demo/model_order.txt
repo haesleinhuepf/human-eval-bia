@@ -3,5 +3,14 @@ gpt-4-turbo-2024-04-09
 claude-3-opus-20240229
 gpt-4-1106-preview
 gpt-3.5-turbo-1106
+llama3-70b-instruct-q4_0
+llama3-70b-instruct-q8_0
+codegemma-7b-instruct-fp16
+mixtral-8x22b-instruct-v0.1-q4_0
+mixtral-8x7b-instruct-v0.1-q5_0
+phi3-3.8b-mini-instruct-4k-fp16
+codellama-70b-instruct-q4_0
 gemini-pro
+command-r-plus-104b-q4_0
 codellama
+llama3-8b-instruct-fp16

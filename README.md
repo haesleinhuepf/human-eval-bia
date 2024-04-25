@@ -9,7 +9,7 @@ The original HumanEval repository is an evaluation harness for the HumanEval pro
 
 Using the benchmark in this repository, we compared 15 LLMs in their capabilities to generate Bio-image Analysis Python code. 
 Therefore, we defined test-cases [listed here](test_cases/readme.md) which can be used to evaluate functional correctness of bio-image analysis code.
-The pass-rate show in this plot expresses the probability that generated code passed given unit-tests:
+The pass-rate shown in this plot expresses the probability that generated code passed given unit-tests:
 
 ![](docs/paper/pass_rate_llms.png)
 

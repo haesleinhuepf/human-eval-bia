@@ -142,7 +142,7 @@ You can compare the original HumanEval code with ours to see modifications [here
 
 ## Citation
 
-To cote our work, e.g. if you are using the Bio-image Analysis test-case set, please cite the following:
+To cite our work, e.g. if you are using the Bio-image Analysis test-case set, please cite the following:
 
 ```
 @article {benchmark_llm_bia,

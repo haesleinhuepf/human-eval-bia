@@ -9,7 +9,7 @@ setup(
     py_modules=["human-eval"],
     version="1.0",
     description="",
-    author="OpenAI",
+    author="Robert Haase, ScaDS.AI, based on work by OpenAI",
     packages=find_packages(),
     install_requires=[
         str(r)

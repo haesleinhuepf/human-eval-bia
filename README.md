@@ -1,8 +1,7 @@
 # Benchmarking Large Language Models for Bio-Image Analysis Code Generation
 
 This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where modifications were made 
-to adapt the evaluation harness for the Bio-image Analysis domain. 
-The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 
+to adapt the evaluation for [Benchmarking LLMs in the Bio-image Analysis domain](https://www.biorxiv.org/content/10.1101/2024.04.19.590278v2). The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 
 "[Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374)". 
 
 ## Insights

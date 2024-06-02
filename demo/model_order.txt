@@ -6,6 +6,7 @@ gpt-4-1106-preview
 gpt-3.5-turbo-1106
 llama3-70b-instruct-q4_0
 llama3-70b-instruct-q8_0
+gemini-1.5-flash-001
 codegemma-7b-instruct-fp16
 mixtral-8x22b-instruct-v0.1-q4_0
 mixtral-8x7b-instruct-v0.1-q5_0

@@ -1,4 +1,5 @@
 # Benchmarking Large Language Models for Bio-Image Analysis Code Generation
+[![DOI](https://zenodo.org/badge/776550410.svg)](https://zenodo.org/doi/10.5281/zenodo.12656869)
 
 This is a fork of the [HumanEval](https://github.com/openai/human-eval) repository where modifications were made 
 to adapt the evaluation for [Benchmarking LLMs in the Bio-image Analysis domain](https://www.biorxiv.org/content/10.1101/2024.04.19.590278v2). The original HumanEval repository is an evaluation harness for the HumanEval problem solving dataset described in the paper 

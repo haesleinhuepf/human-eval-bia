@@ -101,7 +101,7 @@
 
 \begin{abstract}
 In the computational age, life-scientists often have to write Python code to solve bio-image analysis (BIA) problems. Many of them have not been formally trained in programming though. Code-generation, or coding assistance in general, with Large Language Models (LLMs) can have a clear impact on BIA. To the best of our knowledge, the quality of the generated code in this domain has not been studied. We present a quantitative benchmark to estimate the capability of LLMs to generate code for solving common BIA tasks. Our benchmark currently consists of 57 human-written prompts with corresponding reference solutions in Python, and unit-tests to evaluate functional correctness of potential solutions. 
-We demonstrate our benchmark here and compare 15 state-of-the-art LLMs. To ensure that we will cover most of our community needs we also outline mid- and long-term strategies to maintain and extend the benchmark by the BIA open-source community. 
+We demonstrate our benchmark here and compare 18 state-of-the-art LLMs. To ensure that we will cover most of our community needs we also outline mid- and long-term strategies to maintain and extend the benchmark by the BIA open-source community. 
 This work should support users in deciding for an LLM and also guide LLM developers in improving the capabilities of LLMs in the BIA domain. 
 \end{abstract}
 
@@ -114,7 +114,7 @@ This work should support users in deciding for an LLM and also guide LLM develop
 Many projects in biology involve state-of-the-art microscopy and quantitative bio-image analysis (BIA), which increasingly requires solid programming skills for the experimentalists. As programming is commonly not taught to life-scientists, we see potential in using large language models to assist people in this task. Modern Large Language Models (LLMs) such as chatGPT (OpenAI et al. 2023) change the way how humans interact with computers. LLMs were originally developed to solve natural language processing tasks such as text classification, language translation, or question answering. These models are also capable of translating human languages into programming languages, e.g. from English to Python. They can produce executable code that solves a task defined by human natural language input \citep{brown2020language}. This capability has huge potential for interdisciplinary research areas such as microscopy bio-image analysis \citep{Royer2023}. LLMs can fill a gap where scientists with limited programming skills meet more advanced image analysis tasks. LLMs are indeed capable of writing BIA code as demonstrated in \citep{royer2023omega}, but it is yet unclear where the limitations of this technology are in the BIA context. So a systematic way to analyze LLMs in this domain is needed. In a more general setting multiple LLM code generation benchmarks have been proposed \citep{chen2021evaluating,austin2021,lai2022ds1000,yadav2024pythonsaga,hendrycks2021measuring}. We think the bioimaging community urgently needs its own benchmark, an openly accessible, quantitative way to measure LLM capabilities, in particular given that LLM technology is developing rapidly. Here, we present the core of this benchmark. It is derived from HumanEval \citep{chen2021evaluating}, an established code-generation benchmark and tailored for scientific data analysis questions in the bioimaging context.
 
 \begin{blind}
-All code used for the benchmark, sampled prompt-responses from the evaluated LLMs, and Python Jupyter notebooks for reproducing Figures in this preprint are available via this Github repository:
+All code used for the benchmark, sampled prompt-responses from the evaluated LLMs, and Python Jupyter notebooks for reproducing Figures in this preprint are available via this Github repository:\\
    \url{https://github.com/haesleinhuepf/human-eval-bia}
 \end{blind}
 
@@ -140,9 +140,9 @@ Our selected prompts range from basic image analysis tasks, such as applying an 
 
 To enable extension of our benchmark and reproduction of our results, we provide the infrastructure to turn the folder of test-case Jupyter Notebooks into a JSONL file suitable for evaluation with HumanEval \citep{chen2021evaluating}. We also did minor modifications to this framework to be able to execute the benchmark for our purposes. For example, we added code that moves example images to the temporary folder from which the test-case code is executed. With this, our benchmark can cover functions that require accessing files and folders, which the original HumanEval benchmark was not capable of. All modifications are explained in our Github repository and the supplementary Zip file. 
 
-We introduce our benchmark by comparing the capabilities of a range of state-of-the-art LLMs covering commercial and freely available or open source models. We cover gemini-pro \citep{geminiteam2024gemini}, gpt-3.5-turbo-1106, gpt-4-1106-preview, gpt-4-2024-04-09, codegemma, codellama \citep{roziere2024code}, claude-3-opus-20240229 \citep{anthropic2024claude}, command-r-plus \citep{command_r_plus}, llama3 \citep{llama3}, mixtral \citep{jiang2024mixtral} and phi3 \citep{abdin2024phi3}. The gemini-pro model was accessed via the Google Vertex API \citep{google2024vertex}, which did not support specifying a model version. Thus, we document here that the benchmark was executed on April 16th and 17th 2024. Code for benchmarking gemini-1.5-pro and gemini-ultra are available as well, but we were not able to execute it due to rate limits. For the open source models, we set up two kubernetes clusters each with 128 GB of RAM and 4 GPUs (one cluster with Tesla P40 and one with RTX 2080) running ollama version 0.1.32 \citep{ollama2024}. The open source models versions were codegemma:7b-instruct-fp16, codellama:70b-instruct-q4, command-r-plus:104b-q4, llama3:70b-instruct-q8, llama3:70b-instruct-q4, llama3:8b-instruct-fp16, mixtral:8x22b-instruct-v0.1-q4, mixtral:8x7b-instruct-v0.1-q5 and phi3:3.8b-mini-instruct-4k-fp16. The open source model codellama:7b-instruct-q4, named codellama in the following and in Figures for technical reasons, was prompted using ollama version 0.1.29 for Windows \citep{ollama2024windows}.
+We introduce our benchmark by comparing the capabilities of a range of state-of-the-art LLMs covering commercial and freely available or open source models. We cover gemini-pro \citep{geminiteam2024gemini}, gemini-1.5-flash-001, gpt-3.5-turbo-1106, gpt-4-1106-preview, gpt-4-2024-04-09, gpt-4o-2024-05-13, codegemma, codellama \citep{roziere2024code}, claude-3-opus-20240229 \citep{anthropic2024claude}, claude-3-5-sonnet-20240620, command-r-plus \citep{command_r_plus}, llama3 \citep{llama3}, mixtral \citep{jiang2024mixtral} and phi3 \citep{abdin2024phi3}. The gemini-pro model was accessed via the Google Vertex API \citep{google2024vertex}, which did not support specifying a model version. Thus, we document here that the benchmark was executed on April 16th and 17th 2024. Code for benchmarking gemini-1.5-pro and gemini-ultra are available as well, but we were not able to execute it due to rate limits. For the open source models, we set up two kubernetes clusters each with 128 GB of RAM and 4 GPUs (one cluster with Tesla P40 and one with RTX 2080) running ollama version 0.1.32 \citep{ollama2024}. The open source models versions were codegemma:7b-instruct-fp16, codellama:70b-instruct-q4, command-r-plus:104b-q4, llama3:70b-instruct-q8, llama3:70b-instruct-q4, llama3:8b-instruct-fp16, mixtral:8x22b-instruct-v0.1-q4, mixtral:8x7b-instruct-v0.1-q5 and phi3:3.8b-mini-instruct-4k-fp16. The open source model codellama:7b-instruct-q4, named codellama in the following and in Figures for technical reasons, was prompted using ollama version 0.1.29 for Windows \citep{ollama2024windows}.
 
-To benchmark the models, we generated 10 code samples for each of the 57 test-cases from each of the 15 models. Benchmarking of the commercial models was done on a Windows 10 Laptop with an AMD Ryzen 9 6900 CPU, 32 GB of RAM and a NVidia RTX 3050 TI GPU with 4 GB of RAM. For the open source models, the notebooks were run on a virtual machine with Intel Xeon Gold 6226R CPUs, 24 GB of RAM and a NVIDIA  V100S-8Q GPU with 8GB of RAM.
+To benchmark the models, we generated 10 code samples for each of the 57 test-cases from each of the 18 models. Benchmarking of the commercial models was done on a Windows 10 Laptop with an AMD Ryzen 9 6900 CPU, 32 GB of RAM and a NVidia RTX 3050 TI GPU with 4 GB of RAM. For the open source models, the notebooks were run on a virtual machine with Intel Xeon Gold 6226R CPUs, 24 GB of RAM and a NVIDIA  V100S-8Q GPU with 8GB of RAM.
 
 All test-cases (human-readable Jupyter Notebooks and packaged as JSONL file), sampling and evaluation code, generated samples and data analysis/visualization notebooks are available in the Github repository of the project. All respective Python package versions are documented in the environment.yml file in the Github repository and the supplementary Zip file facilitating full reproducibility of our analysis.
 
@@ -153,19 +153,19 @@ All test-cases (human-readable Jupyter Notebooks and packaged as JSONL file), sa
 
 \section{Results}
 
-The pass-rates visualized in Figure \ref{fig:passratellms} correspond to pass@1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Figure \ref{fig:passk}. They reveal that the three leading models, gpt-4-turbo-2024-04-09, claude-4-opus-20240229 and gpt-4-1106-preview have a similar performance in terms of pass-rates of $47\pm38\%$, $47\pm40\%$ and $46\pm39\%$, respectively. 
+The pass-rates visualized in Figure \ref{fig:passratellms} correspond to pass@1 counting the success rate from drawn examples. Detailed pass@k rates with k=1, k=5 and k=10 are shown in Figure \ref{fig:passk}. They reveal that the three leading models, claude-3-5-sonnet-20240620, gpt-4o-2024-05-13 and gpt-4-turbo-2024-04-09 have a similar performance in terms of pass-rates of $58\pm40\%$, $50\pm41\%$ and $47\pm38\%$, respectively. 
 
-Analysis of the pass-rates for individual test-cases are shown in Figure \ref{fig:performancepertask}. The results highlight that most of the test-cases were solved by at least one LLM. Interestingly, some test-cases could not be solved by any LLM, even though we would consider them relatively simple, e.g.deconvolve\_image, extract\_surface\_measure\_area and open\_image\_read\_voxel\_size.
+Analysis of the pass-rates for individual test-cases are shown in Figure \ref{fig:performancepertask}. The results highlight that most of the test-cases were solved by at least one LLM. Interestingly, some test-cases could not be solved by any LLM, even though we would consider them relatively simple, e.g. deconvolve\_image, extract\_surface\_measure\_area and open\_image\_read\_voxel\_size.
 
-Details about how often the LLMs required specific Python libraries are summarized in Figure \ref{fig:usedlibraries}. For example, the skimage library was used in 22 of our human-written reference codes and thus, appears 220 times. By contrast, skimage was only used in a range of 68 to 154 generated code samples. Interestingly, our human-written reference codes were not using opencv, the "cv2" Python package, but the number of LLMs generated code where "cv2" appeared ranged from 31 to 132 cases.
+Details about how often the LLMs required specific Python libraries are summarized in Figure \ref{fig:usedlibraries}. For example, the skimage library was used in 22 of our human-written reference codes and thus, appears 220 times. By contrast, skimage was only used in a range of 68 to 154 generated code samples. Interestingly, our human-written reference codes were not using opencv, the "cv2" Python package, but the number of LLMs generated code where "cv2" appeared ranged from 31 to 192 cases.
 
-Common error messages and corresponding counts for each LLM are given in Figure \ref{fig:commonerrors}. This analysis reveals a few systematic differences between the models, most notably gemini-pro often left out import statements leading to common error messages such as "name 'np' is not defined" and llama3 and command-r-plus produced by far the most syntax errors. 
+Common error messages and corresponding counts for each LLM are given in Figure \ref{fig:commonerrors}. This analysis reveals a few systematic differences between the models, most notably gemini-pro often left out import statements leading to common error messages such as "name 'np' is not defined". gemini-1.5-flash, a successor model did not show this pattern. llama3-8b and command-r-plus produced by far the most syntax errors. 
 
-Sampling the LLMs using our prompts took from under 2 hours for the smaller models to 15-20 hours for the larger ones but exact comparisons aren't available because different models ran on different hardware and infrastructure. The models gpt-3.5-turbo-1106, both gpt-4 models together, and claude-3-opus-20240229 caused costs of \$0.52, \$13.02, and \$24.58, respectively. All other models did not cause direct costs as the use of their API was free. 
+Sampling the LLMs using our prompts took from under 2 hours for the smaller models to 15-20 hours for the larger ones but exact comparisons aren't available because different models ran on different hardware and infrastructure. The models gpt-3.5-turbo-1106, both gpt-4 models together, claude-3-opus-20240229, and claude-3-5-sonnet-20240620 caused costs of \$0.52, \$13.02, \$24.58, and approx. \$3, respectively. All other models did not cause direct costs as the use of their API was free. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8.5cm]{pass_rate_llms.png}
+\includegraphics[width=9cm]{pass_rate_llms.png}
 \caption{Quantitative pass-rate comparison of all tested LLMs and, as a sanity check, the human reference solution: Measured fraction of passed tests visualized as box plot summarizing measurements from 57 test-cases. The corresponding, updated notebook is available online: 
 \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_by_case.ipynb}
 \newline
@@ -176,7 +176,7 @@ Sampling the LLMs using our prompts took from under 2 hours for the smaller mode
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=8.5cm]{pass_k_llms_plot.png}
+\includegraphics[width=9cm]{pass_k_llms_plot.png}
 \caption{Detailed pass@k with $k=1$, $k=5$ and $k=10$ is a way to estimate the chance to retrieve at least on functional code snippet when generating $k$ samples. The corresponding, updated notebook is available online: 
 \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_by_passk.ipynb}
 \newline
@@ -189,7 +189,7 @@ Sampling the LLMs using our prompts took from under 2 hours for the smaller mode
 
 \begin{figure*}[h]
 \centering
-\includegraphics[width=0.75\textwidth]{performance_per_task.png}
+\includegraphics[width=0.82\textwidth]{performance_per_task.png}
 \caption{Test-cases and corresponding pass@1 for each LLM. Pass@1 reports the probability that a generated solution works if a user asks the LLM just a single time. The corresponding, updated notebook is available online:
 \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_by_case.ipynb}
 \newline
@@ -208,7 +208,7 @@ Sampling the LLMs using our prompts took from under 2 hours for the smaller mode
 
 \begin{figure}[h]
     %\centering
-    \includegraphics[width=8.5cm]{used_libraries_heatmap.png}
+    \includegraphics[width=9cm]{used_libraries_heatmap.png}
     \caption{Used Python libraries in generated code from the tested LLMs. If one generated code snippet contained the same library twice, it is only counted once. The Notebook for generating this table can be found online: \url{https://github.com/haesleinhuepf/human-eval-bia/blob/main/demo/summarize_used_libraries.ipynb}
     \newline
     \newline }

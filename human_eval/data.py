@@ -47,3 +47,22 @@ def write_jsonl(filename: str, data: Iterable[Dict], append: bool = False):
         with open(filename, mode) as fp:
             for x in data:
                 fp.write((json.dumps(x) + "\n").encode('utf-8'))
+
+
+def extract_python(response):
+    """
+    Removes 'Python' and 'python' from the response code block.
+    """
+    if '[PYTHON]' in response and '[/PYTHON]' in response:
+        response = response.replace('[PYTHON]', '```')
+        response = response.replace('[/PYTHON]', '```')
+        
+    if '```' in response:
+        response = response.replace('```python', '```')
+        response = response.replace('```Python', '```')
+        temp = response.split('```')
+        for i in range(0, len(temp), 2):
+            temp[i] = ""
+        response = "".join(temp)
+    
+    return response

@@ -6,6 +6,7 @@ claude-3-opus-20240229
 gpt-4-1106-preview
 gemini-1.5-pro-001
 gpt-4o-mini-2024-07-18
+deepseek-coder-v2
 llama3-70b-instruct-q8_0
 llama3-70b-instruct-q4_0
 gpt-3.5-turbo-1106
@@ -16,6 +17,7 @@ mixtral-8x7b-instruct-v0.1-q5_0
 phi3-3.8b-mini-instruct-4k-fp16
 codellama-70b-instruct-q4_0
 gemini-pro
+mistral-nemo
 llama3-8b-instruct-fp16
 command-r-plus-104b-q4_0
 codellama

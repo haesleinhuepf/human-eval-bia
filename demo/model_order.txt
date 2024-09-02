@@ -8,6 +8,7 @@ gemini-1.5-pro-001
 gpt-4o-mini-2024-07-18
 deepseek-coder-v2
 llama3-70b-instruct-q8_0
+deepseek-coder-v2_biabob
 llama3-70b-instruct-q4_0
 gpt-3.5-turbo-1106
 gemini-1.5-flash-001

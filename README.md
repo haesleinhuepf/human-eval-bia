@@ -81,7 +81,7 @@ To reproduce our benchmarks, you can go through the notebooks provided in the `/
 You can add new test cases by adding new notebooks to the `/notebooks/human-eval-bia` directory. 
 Check out the examples there and make sure to stick to the following rules.
 
-![CAUTION]
+> ![CAUTION]
 > Most importantly: When writing new test case notebooks, do not use language models for code generation. 
 > You would otherwise bias the benchmark towards this model. 
 > Use human-writen code only and/or examples from the documentation of specific librarires.
@@ -89,24 +89,24 @@ Check out the examples there and make sure to stick to the following rules.
 The notebooks have to have the following format:
 * Within one cell there must be a function that solves a specific [bio-image analysis] task. Very basic example, computing the sum of two numbers:
 ```python
-def sum(a, b):
+def my_sum(a, b):
     """
     This function computes the sum of two numbers.
     """
     return a + b
 ```
-* This function must have a meaningful docstring between """ and """. It must be so meaningful that a language model could possibly write the entire function.
-* There must be another code cell that starts with `def check(candiate):` and contains test code to test the generated code.
-* The text code must use `assert` statements and call the `candidate` function. E.g. if a given function to test is `sum`, then a valid test for `sum` would be:
+* This function must have a meaningful docstring between """ and """ which will serve as prompt together with the function signature. Ideally, write a short natural sentence one could hear between two humans. It must be detailed engugh though, so that a language model (or a human) has all necessary information to write the entire function. Also make sure you specify return values detailed enough. [Check out the list of pre-existing prompts](https://github.com/haesleinhuepf/human-eval-bia/blob/main/test_cases/readme.md) to get some inspiration. 
+* There must be another code cell that starts with `def check(candidate):` and contains test code to test the generated code.
+* The test code must use `assert` statements and call the `candidate` function. E.g. if a given function to test is `my_sum`, then a valid test for `my_sum` would be:
 ```
 def check(candidate):
     assert candidate(3, 4) == 7
 ```
 * A third python code cell in the notebook must call the `check` function with your custom function, e.g. like this, to prove that the code you provided works with the tests you wrote:
 ```
-check(sum)
+check(my_sum)
 ```
-* Save the new test-case in a notebook that has the same name as the test, so that people can find it easily. In our case above: `sum.ipynb`.
+* Save the new test-case in a notebook that has the same name as the test function, so that others can find it easily. In our case above: `my_sum.ipynb`.
 * Optional: You can add as many markdown cells as you like to explain the test case.
 
 ## Adding dependencies

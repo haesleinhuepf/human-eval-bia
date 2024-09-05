@@ -15,6 +15,7 @@ gemini-1.5-flash-001
 codegemma-7b-instruct-fp16
 mixtral-8x22b-instruct-v0.1-q4_0
 mixtral-8x7b-instruct-v0.1-q5_0
+yi-coder_9b
 phi3-3.8b-mini-instruct-4k-fp16
 codellama-70b-instruct-q4_0
 gemini-pro
@@ -22,3 +23,4 @@ mistral-nemo
 llama3-8b-instruct-fp16
 command-r-plus-104b-q4_0
 codellama
+yi-coder_1.5b

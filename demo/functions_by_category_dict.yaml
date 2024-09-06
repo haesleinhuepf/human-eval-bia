@@ -1,3 +1,13 @@
+Feature Extraction:
+- create_umap
+- workflow_segment_measure_umap
+- measure_properties_of_regions
+- convex_hull_measure_area
+- count_number_of_touching_neighbors
+- measure_aspect_ratio_of_regions
+- measure_intensity_of_labels
+- measure_intensity_over_time
+- measure_mean_image_intensity
 File I/O:
 - list_image_files_in_folder
 - open_image_read_voxel_size
@@ -16,6 +26,11 @@ Image Preprocessing:
 - detect_edges
 - convolve_images
 - deconvolve_image
+- maximum_intensity_projection
+- subsample_image
+- sum_images
+- sum_intensity_projection
+- tiled_image_processing
 Morphological Operations:
 - binary_closing
 - binary_skeleton
@@ -29,6 +44,8 @@ Pipeline/Workflow Automation:
 - workflow_segment_measure_umap
 - workflow_segmentation_measurement_summary
 - workflow_watershed_segmentation_correction_measurement
+- tiled_image_processing
+- workflow_segmentation_counting
 Quantification and Measurement:
 - convex_hull_measure_area
 - count_number_of_touching_neighbors
@@ -44,16 +61,24 @@ Quantification and Measurement:
 - radial_intensity_profile
 - fit_circle
 - create_umap
+- map_pixel_count_of_labels
+- workflow_watershed_segmentation_correction_measurement
+- workflow_segment_measure_umap
+- workflow_segmentation_measurement_summary
+- workflow_segmentation_counting
 Segmentation:
 - apply_otsu_threshold_and_count_postiive_pixels
 - region_growing_segmentation
+- workflow_watershed_segmentation_correction_measurement
+- workflow_segment_measure_umap
+- workflow_segmentation_measurement_summary
+- workflow_segmentation_counting
 Statistical Analysis:
 - bland_altman
 - t_test
 - pair_wise_correlation_matrix
 - mean_std_column
 - mean_squared_error
-'data_operations:':
 - combine_columns_of_tables
 hello_world:
 - return_hello_world

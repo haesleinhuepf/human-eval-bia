@@ -1,3 +1,6 @@
+#Define categories for each function. Function name should be the filename of your test_case
+#Categories can be a combination of:
+#'segmentation','morphological_operations', 'statistical_analysis', 'feature_extraction', 'measurement', 'image_preprocessing','file_i_o', 'hello_world', 'workflow_automation'
 apply_otsu_threshold_and_count_postiive_pixels:
 - segmentation
 binary_closing:

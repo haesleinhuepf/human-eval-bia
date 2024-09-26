@@ -1,6 +1,6 @@
 tqdm
 fire
-numpy
+numpy<2.0.0
 jupyterlab
 scikit-image
 openai==1.5.0

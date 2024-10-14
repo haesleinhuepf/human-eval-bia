@@ -7,6 +7,7 @@ gpt-4-turbo-2024-04-09
 claude-3-opus-20240229
 gpt-4-1106-preview
 gemini-1.5-pro-001
+meta-llama-3.1-405b-instruct
 gpt-4o-mini-2024-07-18
 deepseek-coder-v2
 llama3-70b-instruct-q8_0

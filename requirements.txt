@@ -24,3 +24,4 @@ SimpleITK
 trimesh
 itk
 seaborn
+trackpy

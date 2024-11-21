@@ -1,0 +1,135 @@
+#Define categories for each function. Function name should be the filename of your test_case
+#Categories can be a combination of:
+#'segmentation','morphological_operations', 'statistical_analysis', 'feature_extraction', 'measurement', 'image_preprocessing','file_i_o', 'hello_world', 'workflow_automation'
+apply_otsu_threshold_and_count_postiive_pixels:
+- segmentation
+binary_closing:
+- morphological_operations
+binary_skeleton:
+- morphological_operations
+bland_altman:
+- statistical_analysis
+combine_columns_of_tables:
+- statistical_analysis
+convex_hull_measure_area:
+- feature_extraction
+- measurement
+convolve_images:
+- image_preprocessing
+count_number_of_touching_neighbors:
+- feature_extraction
+- measurement
+count_objects_over_time:
+- measurement
+count_overlapping_regions:
+- measurement
+create_umap:
+- feature_extraction
+- measurement
+crop_quarter_image:
+- image_preprocessing
+deconvolve_image:
+- image_preprocessing
+detect_edges:
+- image_preprocessing
+expand_labels_without_overlap:
+- image_preprocessing
+extract_surface_measure_area:
+- measurement
+fit_circle:
+- measurement
+label_binary_image_and_count_labels:
+- morphological_operations
+label_sequentially:
+- morphological_operations
+list_image_files_in_folder:
+- file_i_o
+map_pixel_count_of_labels:
+- measurement
+mask_image:
+- image_preprocessing
+maximum_intensity_projection:
+- image_preprocessing
+mean_squared_error:
+- statistical_analysis
+mean_std_column:
+- statistical_analysis
+measure_aspect_ratio_of_regions:
+- feature_extraction
+- measurement
+measure_intensity_of_labels:
+- feature_extraction
+- measurement
+measure_intensity_over_time:
+- feature_extraction
+- measurement
+measure_mean_image_intensity:
+- feature_extraction
+- measurement
+measure_pixel_count_of_labels:
+- measurement
+measure_properties_of_regions:
+- feature_extraction
+- measurement
+open_image_read_voxel_size:
+- file_i_o
+open_image_return_dimensions:
+- file_i_o
+open_nifti_image:
+- file_i_o
+open_zarr:
+- file_i_o
+pair_wise_correlation_matrix:
+- statistical_analysis
+radial_intensity_profile:
+- measurement
+region_growing_segmentation:
+- segmentation
+remove_labels_on_edges:
+- morphological_operations
+remove_noise_edge_preserving:
+- image_preprocessing
+remove_small_labels:
+- morphological_operations
+return_hello_world:
+- hello_world
+rgb_to_grey_image_transform:
+- image_preprocessing
+rotate_image_by_90_degrees:
+- image_preprocessing
+subsample_image:
+- image_preprocessing
+subtract_background_tophat:
+- image_preprocessing
+sum_images:
+- image_preprocessing
+sum_intensity_projection:
+- image_preprocessing
+t_test:
+- statistical_analysis
+tiled_image_processing:
+- image_preprocessing
+- workflow_automation
+transpose_image_axes:
+- image_preprocessing
+workflow_batch_process_folder_count_labels:
+- workflow_automation
+workflow_batch_process_folder_measure_intensity:
+- workflow_automation
+workflow_segment_measure_umap:
+- feature_extraction
+- measurement
+- segmentation
+- workflow_automation
+workflow_segmentation_counting:
+- measurement
+- segmentation
+- workflow_automation
+workflow_segmentation_measurement_summary:
+- measurement
+- segmentation
+- workflow_automation
+workflow_watershed_segmentation_correction_measurement:
+- measurement
+- segmentation
+- workflow_automation

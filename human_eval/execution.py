@@ -139,10 +139,11 @@ def swallow_io():
 def create_tempdir(copy_examples: bool = False):
     import os
     import shutil
+    import pathlib
     with tempfile.TemporaryDirectory() as dirname:
         os.mkdir(dirname + "/test")
         if copy_examples:
-            shutil.copytree("../example_data", dirname + "/example_data")
+            shutil.copytree(pathlib.Path(__file__).resolve().parents[0] / "../example_data", dirname + "/example_data")
         with chdir(dirname + "/test"):
             yield dirname
 

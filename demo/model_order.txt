@@ -1,4 +1,5 @@
 reference
+claude-3-5-sonnet-20241022
 claude-3-5-sonnet-20240620
 gpt-4o-2024-08-06
 o1-mini-2024-09-12

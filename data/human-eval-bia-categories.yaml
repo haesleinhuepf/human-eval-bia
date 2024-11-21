@@ -1,7 +1,7 @@
 #Define categories for each function. Function name should be the filename of your test_case
 #Categories can be a combination of:
 #'segmentation','morphological_operations', 'statistical_analysis', 'feature_extraction', 'measurement', 'image_preprocessing','file_i_o', 'hello_world', 'workflow_automation'
-apply_otsu_threshold_and_count_postiive_pixels:
+apply_otsu_threshold_and_count_positive_pixels:
 - segmentation
 binary_closing:
 - morphological_operations
@@ -10,12 +10,12 @@ binary_skeleton:
 bland_altman:
 - statistical_analysis
 combine_columns_of_tables:
-- statistical_analysis
+- data_wrangling
 convex_hull_measure_area:
 - feature_extraction
 - measurement
 convolve_images:
-- image_preprocessing
+- image_filtering
 count_number_of_touching_neighbors:
 - feature_extraction
 - measurement
@@ -27,29 +27,30 @@ create_umap:
 - feature_extraction
 - measurement
 crop_quarter_image:
-- image_preprocessing
+- image_transformation
 deconvolve_image:
-- image_preprocessing
+- image_filtering
 detect_edges:
-- image_preprocessing
+- segmentation
 expand_labels_without_overlap:
-- image_preprocessing
+- segmentation_post_processing
 extract_surface_measure_area:
 - measurement
 fit_circle:
 - measurement
 label_binary_image_and_count_labels:
-- morphological_operations
+- segmentation_post_processing
+- measurement
 label_sequentially:
-- morphological_operations
+- segmentation_post_processing
 list_image_files_in_folder:
 - file_i_o
 map_pixel_count_of_labels:
 - measurement
 mask_image:
-- image_preprocessing
+- segmentation_post_processing
 maximum_intensity_projection:
-- image_preprocessing
+- image_transformation
 mean_squared_error:
 - statistical_analysis
 mean_std_column:
@@ -82,40 +83,42 @@ open_zarr:
 pair_wise_correlation_matrix:
 - statistical_analysis
 radial_intensity_profile:
-- measurement
+- image_transformation
 region_growing_segmentation:
 - segmentation
 remove_labels_on_edges:
-- morphological_operations
+- segmentation_post_processing
 remove_noise_edge_preserving:
 - image_preprocessing
 remove_small_labels:
-- morphological_operations
+- segmentation_post_processing
 return_hello_world:
 - hello_world
 rgb_to_grey_image_transform:
-- image_preprocessing
+- image_transformation
 rotate_image_by_90_degrees:
-- image_preprocessing
+- image_transformation
 subsample_image:
-- image_preprocessing
+- image_transformation
 subtract_background_tophat:
-- image_preprocessing
+- image_filtering
 sum_images:
-- image_preprocessing
+- image_transformation
 sum_intensity_projection:
-- image_preprocessing
+- image_transformation
 t_test:
 - statistical_analysis
 tiled_image_processing:
-- image_preprocessing
+- image_filtering
 - workflow_automation
 transpose_image_axes:
-- image_preprocessing
+- image_transformation
 workflow_batch_process_folder_count_labels:
 - workflow_automation
+- measurement
 workflow_batch_process_folder_measure_intensity:
 - workflow_automation
+- measurement
 workflow_segment_measure_umap:
 - feature_extraction
 - measurement
@@ -133,3 +136,54 @@ workflow_watershed_segmentation_correction_measurement:
 - measurement
 - segmentation
 - workflow_automation
+convert_points_polygon:
+- data_wrangling
+create_multipolygon_from_coordinates:
+- data_wrangling
+dataframe_column_rename:
+- data_wrangling
+detect_ellipse:
+- segmentation
+distance_between_maxima:
+- measurement
+fft_spectrum:
+- image_transformation
+find_closest_neighbors:
+- measurement
+fit_gaussian_to_spot:
+- segmentation
+flow_field_deformation:
+- image_transformation
+generate_image_histogram:
+- measurement
+identify_centroids:
+- measurement
+interpolate_stack:
+- image_transformation
+linear_intensity_profile:
+- image_transformation
+load_tif_and_output_rgb:
+- file_i_o
+local_maxima_from_distance_transform:
+- segmentation
+read_imagej_tif_metadata:
+- file_i_o
+read_ome_metadata_from_ome_xml:
+- file_i_o
+register_timelapse:
+- image_transformation
+reshape_array:
+- image_transformation
+roi_imagej_to_ezomero:
+- data_wrangling
+save_image_with_voxel_size:
+- file_i_o
+scale_image_affine_transform:
+- image_transformation
+select_coexpressing_cells:
+- measurement
+- segmentation_post_processing
+stack_and_merge:
+- image_transformation
+translate_3d_image_along_vector:
+- image_transformation

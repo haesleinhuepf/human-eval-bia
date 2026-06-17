@@ -96,7 +96,7 @@ def sum(a, b):
     return a + b
 ```
 * This function must have a meaningful docstring between """ and """. It must be so meaningful that a language model could possibly write the entire function.
-* There must be another code cell that starts with `def check(candiate):` and contains test code to test the generated code.
+* There must be another code cell that starts with `def check(candidate):` and contains test code to test the generated code.
 * The text code must use `assert` statements and call the `candidate` function. E.g. if a given function to test is `sum`, then a valid test for `sum` would be:
 ```
 def check(candidate):

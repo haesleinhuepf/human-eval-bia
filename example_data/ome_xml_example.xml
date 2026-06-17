@@ -1,0 +1,38 @@
+<OME xmlns="http://www.openmicroscopy.org/Schemas/OME/2016-06" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openmicroscopy.org/Schemas/OME/2016-06 http://www.openmicroscopy.org/Schemas/OME/2016-06/ome.xsd" UUID="urn:uuid:85a5ab3e-0ead-498f-b2cb-3531ea0788ef" Creator="OME Bio-Formats 5.2.0-m4">
+  <Experiment Type="PGIDocumentation" ID="urn:lsid:loci.wisc.edu:Experiment:OWS348">
+    <Description>4 Cell Embryo</Description>
+    <ExperimenterRef ID="urn:lsid:loci.wisc.edu:Experimenter:116"/>
+  </Experiment>
+  <Experimenter ID="urn:lsid:loci.wisc.edu:Experimenter:116" FirstName="Maimoon" LastName="Nasim" Email="mnasim@wisc.edu" Institution=""/>
+  <Instrument ID="urn:lsid:loci.wisc.edu:Instrument:OWS1">
+    <Microscope Manufacturer="Nikon" Model="Eclipse TE300" SerialNumber="U629762" Type="Inverted"/>
+    <Laser Manufacturer="Spectral Physics" Model="Tsunami 5W" SerialNumber="2123" ID="urn:lsid:loci.wisc.edu:LightSource:OWS1" Type="SolidState" LaserMedium="TiSapphire"/>
+    <Detector Manufacturer="Hamamatzu" Model="H7422" ID="urn:lsid:loci.wisc.edu:Detector:OWS1" Type="PMT"/>
+    <Detector Manufacturer="Bio-Rad" Model="1024TLD" ID="urn:lsid:loci.wisc.edu:Detector:OWS2" Type="Photodiode"/>
+    <Objective Manufacturer="Nikon" Model="S Fluor" SerialNumber="044989" ID="urn:lsid:loci.wisc.edu:Objective:OWS2" Correction="PlanApo" Immersion="Oil" LensNA="1.4" NominalMagnification="100.0" CalibratedMagnification="100.0" WorkingDistance="0.13" WorkingDistanceUnit="µm"/>
+  </Instrument>
+  <Image ID="Image:0" Name="tubhiswt">
+    <AcquisitionDate>2013-01-15T17:02:40</AcquisitionDate>
+    <ExperimenterRef ID="urn:lsid:loci.wisc.edu:Experimenter:116"/>
+    <Pixels ID="Pixels:0" DimensionOrder="XYZTC" Type="uint8" SignificantBits="8" Interleaved="false" BigEndian="false" SizeX="512" SizeY="512" SizeZ="1" SizeC="2" SizeT="1">
+      <Channel ID="Channel:0:0" SamplesPerPixel="1" Color="-1">
+        <LightSourceSettings ID="urn:lsid:loci.wisc.edu:LightSource:OWS1"/>
+        <DetectorSettings ID="urn:lsid:loci.wisc.edu:Detector:OWS1"/>
+        <LightPath/>
+      </Channel>
+      <Channel ID="Channel:0:1" SamplesPerPixel="1" Color="-1">
+        <LightSourceSettings ID="urn:lsid:loci.wisc.edu:LightSource:OWS1"/>
+        <DetectorSettings ID="urn:lsid:loci.wisc.edu:Detector:OWS2"/>
+        <LightPath/>
+      </Channel>
+      <TiffData IFD="0" FirstZ="0" FirstT="0" FirstC="0" PlaneCount="1">
+        <UUID FileName="tubhiswt_C0.ome.tif">urn:uuid:cb8b431f-ab4e-4e54-8351-96d4eb785014</UUID>
+      </TiffData>
+      <TiffData IFD="0" FirstZ="0" FirstT="0" FirstC="1" PlaneCount="1">
+        <UUID FileName="tubhiswt_C1.ome.tif">urn:uuid:85a5ab3e-0ead-498f-b2cb-3531ea0788ef</UUID>
+      </TiffData>
+      <Plane TheZ="0" TheT="0" TheC="0"/>
+      <Plane TheZ="0" TheT="0" TheC="1"/>
+    </Pixels>
+  </Image>
+</OME>
